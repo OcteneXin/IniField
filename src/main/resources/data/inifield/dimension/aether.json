@@ -1,0 +1,12 @@
+{
+  "type": "inifield:aether",
+  "generator": {
+    "type": "minecraft:noise",
+    "seed": 0,
+    "settings": "minecraft:floating_islands",
+    "biome_source": {
+      "type": "minecraft:fixed",
+      "biome": "minecraft:snowy_tundra"
+    }
+  }
+}
