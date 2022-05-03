@@ -1,0 +1,43 @@
+{
+	"credit": "Made with Blockbench",
+	"ambientocclusion": false,
+	"texture_size": [32, 32],
+	"textures": {
+		"0": "inifield:blocks/weed_leaves_cane",
+		"1": "inifield:blocks/weed_leaves_leaves",
+		"particle": "inifield:blocks/weed_leaves_leaves"
+	},
+	"elements": [
+		{
+			"from": [7.5, 0, 7.5],
+			"to": [8.5, 16, 8.5],
+			"faces": {
+				"north": {"uv": [0, 0, 1, 16], "texture": "#0"},
+				"east": {"uv": [1, 0, 2, 16], "texture": "#0"},
+				"south": {"uv": [2, 0, 3, 16], "texture": "#0"},
+				"west": {"uv": [3, 0, 4, 16], "texture": "#0"},
+				"up": {"uv": [5, 1, 4, 0], "texture": "#0"},
+				"down": {"uv": [5, 1, 4, 2], "texture": "#0"}
+			}
+		},
+		{
+			"from": [-4, 0, 0],
+			"to": [12, 32, 0],
+			"shade": false,
+			"rotation": {"angle": -45, "axis": "y", "origin": [0, 0, 0]},
+			"faces": {
+				"north": {"uv": [8, 0, 16, 16], "texture": "#1"},
+				"south": {"uv": [16, 0, 8, 16], "texture": "#1"}
+			}
+		},
+		{
+			"from": [8.5, 6, 9],
+			"to": [8.5, 32, 25],
+			"shade": false,
+			"faces": {
+				"east": {"uv": [0, 0, 8, 16], "texture": "#1"},
+				"west": {"uv": [8, 0, 16, 16], "texture": "#1"}
+			}
+		}
+	]
+}

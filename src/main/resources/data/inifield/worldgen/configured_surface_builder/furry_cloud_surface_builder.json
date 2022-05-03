@@ -1,0 +1,14 @@
+{
+  "config": {
+    "top_material": {
+      "Name": "inifield:light_cloud"
+    },
+    "under_material": {
+      "Name": "inifield:normal_cloud"
+    },
+    "underwater_material": {
+      "Name": "inifield:normal_cloud"
+    }
+  },
+  "type": "inifield:furry_cloud_surface_builder"
+}

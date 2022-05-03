@@ -1,0 +1,6 @@
+{
+  "parent": "block/cube_all",
+  "textures": {
+    "all": "inifield:blocks/normal_cloud"
+  }
+}

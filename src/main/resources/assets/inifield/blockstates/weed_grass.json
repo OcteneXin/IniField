@@ -1,0 +1,66 @@
+{
+  "variants": {
+    "age=0,weed_type=0": {
+      "model": "inifield:block/weed_grass_root"
+    },
+    "age=0,weed_type=1": {
+      "model": "inifield:block/weed_grass_slim"
+    },
+    "age=0,weed_type=2": [
+      {
+        "model": "inifield:block/weed_grass_leaves_0"
+      },
+      {
+        "model": "inifield:block/weed_grass_leaves_1"
+      }
+    ],
+    "age=0,weed_type=3": [
+      {
+        "model": "inifield:block/weed_grass_furry_0"
+      },
+      {
+        "model": "inifield:block/weed_grass_furry_0",
+        "y": 90
+      },
+      {
+        "model": "inifield:block/weed_grass_furry_0",
+        "y": 180
+      },
+      {
+        "model": "inifield:block/weed_grass_furry_0",
+        "y": 270
+      }
+    ],
+    "age=1,weed_type=0": {
+      "model": "inifield:block/weed_grass_root"
+    },
+    "age=1,weed_type=1": {
+      "model": "inifield:block/weed_grass_slim"
+    },
+    "age=1,weed_type=2": [
+      {
+        "model": "inifield:block/weed_grass_leaves_0"
+      },
+      {
+        "model": "inifield:block/weed_grass_leaves_1"
+      }
+    ],
+    "age=1,weed_type=3": [
+      {
+        "model": "inifield:block/weed_grass_furry_0"
+      },
+      {
+        "model": "inifield:block/weed_grass_furry_0",
+        "y": 90
+      },
+      {
+        "model": "inifield:block/weed_grass_furry_0",
+        "y": 180
+      },
+      {
+        "model": "inifield:block/weed_grass_furry_0",
+        "y": 270
+      }
+    ]
+  }
+}

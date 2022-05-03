@@ -1,0 +1,17 @@
+{
+  "type": "inifield:grass_surface_builder",
+  "config": {
+    "top_material": {
+      "Name": "minecraft:grass_block",
+      "Properties": {
+        "snowy": "false"
+      }
+    },
+    "under_material": {
+      "Name": "minecraft:dirt"
+    },
+    "underwater_material": {
+      "Name": "minecraft:gravel"
+    }
+  }
+}

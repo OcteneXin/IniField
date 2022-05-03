@@ -1,0 +1,61 @@
+{
+  "player_spawn_friendly": false,
+  "precipitation": "none",
+  "temperature": 0.4,
+  "downfall": 0.5,
+  "category": "none",
+  "depth": 0,
+  "scale": 0.1,
+  "effects": {
+    "sky_color": 12116213,
+    "foliage_color": 4751207,
+    "grass_color": 6466686,
+    "fog_color": 12638463,
+    "water_color": 7119594,
+    "water_fog_color": 855390
+  },
+  "surface_builder": "inifield:grass_surface_builder",
+  "carvers": {},
+  "features": [
+    [],
+    ["minecraft:lake_water"],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [ "minecraft:patch_tall_grass_2",
+      "minecraft:plain_vegetation",
+      "minecraft:flower_plain_decorated",
+      "minecraft:patch_grass_plain",
+      "minecraft:brown_mushroom_normal",
+      "minecraft:red_mushroom_normal",
+      "minecraft:patch_sugar_cane",
+      "minecraft:patch_pumpkin",
+      "minecraft:spring_water",
+      "minecraft:spring_lava",
+      "inifield:patch_diamond",
+      "inifield:world_tree",
+      "inifield:patch_snow_drop_flower"
+      ],
+    []
+  ],
+  "starts": [],
+  "creature_spawn_probability": 0.17,
+  "spawners": {
+    "monster": [],
+    "creature": [
+      {
+        "type": "minecraft:bee",
+        "weight": 100,
+        "minCount": 4,
+        "maxCount": 8
+      }],
+    "ambient": [],
+    "water_creature": [],
+    "water_ambient": [],
+    "misc": []
+  },
+  "spawn_costs": {}
+}

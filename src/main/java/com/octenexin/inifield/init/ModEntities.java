@@ -1,5 +1,6 @@
-package com.octenexin.inifield.entity;
+package com.octenexin.inifield.init;
 
+import com.octenexin.inifield.entity.Notch;
 import com.octenexin.inifield.utils.Reference;
 import net.minecraft.entity.EntityClassification;
 import net.minecraft.entity.EntityType;
@@ -18,7 +19,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 import java.lang.reflect.Field;
 
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
-public class EntityLoader {
+public class ModEntities {
     public static final DeferredRegister<EntityType<?>> ENTITY_TYPES = DeferredRegister.create(ForgeRegistries.ENTITIES, Reference.MOD_ID);
     public static final RegistryObject<EntityType<Notch>> NOTCH = ENTITY_TYPES.register("notch", () -> EntityType.Builder.of(Notch::new, EntityClassification.MONSTER).sized(1, 2).build("notch"));
 

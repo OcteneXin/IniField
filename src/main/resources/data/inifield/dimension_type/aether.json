@@ -1,5 +1,4 @@
 {
-  "name": "inifield:aether",
   "ultrawarm": false,
   "natural": true,
   "piglin_safe": false,
@@ -9,7 +8,8 @@
   "has_skylight": true,
   "has_ceiling": false,
   "coordinate_scale": 1,
-  "ambient_light": 1,
+  "ambient_light": 0,
   "logical_height": 256,
+  "effects": "inifield:sky_property",
   "infiniburn": "minecraft:infiniburn_overworld"
 }

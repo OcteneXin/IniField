@@ -1,0 +1,43 @@
+{
+	"credit": "Made with Blockbench",
+	"ambientocclusion": false,
+	"textures": {
+		"0": "inifield:blocks/furry_cane",
+		"1": "inifield:blocks/furry_part_video",
+		"particle": "inifield:blocks/furry_part"
+	},
+	"elements": [
+		{
+			"from": [7.5, 0, 7.5],
+			"to": [8.5, 8, 8.5],
+			"faces": {
+				"north": {"uv": [0, 0, 1, 8], "texture": "#0"},
+				"east": {"uv": [1, 0, 2, 8], "texture": "#0"},
+				"south": {"uv": [2, 0, 3, 8], "texture": "#0"},
+				"west": {"uv": [3, 0, 4, 8], "texture": "#0"},
+				"up": {"uv": [5, 1, 4, 0], "texture": "#0"},
+				"down": {"uv": [5, 1, 4, 2], "texture": "#0"}
+			}
+		},
+		{
+			"from": [8, 0, -8],
+			"to": [8, 16, 8],
+			"shade": false,
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 0, 8]},
+			"faces": {
+				"east": {"uv": [16, 0, 0, 16], "texture": "#1","tintindex": 0 },
+				"west": {"uv": [0, 0, 16, 16], "texture": "#1","tintindex": 0 }
+			}
+		},
+		{
+			"from": [8, 0, -8],
+			"to": [8, 16, 8],
+			"shade": false,
+			"rotation": {"angle": 22.5, "axis": "y", "origin": [8, 0, 8]},
+			"faces": {
+				"east": {"uv": [16, 0, 0, 16], "texture": "#1","tintindex": 0 },
+				"west": {"uv": [0, 0, 16, 16], "texture": "#1","tintindex": 0 }
+			}
+		}
+	]
+}

@@ -1,29 +1,26 @@
 package com.octenexin.inifield;
 
-import com.octenexin.inifield.entity.EntityLoader;
+import com.octenexin.inifield.client.InifieldClient;
+import com.octenexin.inifield.init.*;
 import com.octenexin.inifield.utils.Reference;
-import com.octenexin.inifield.world.dimension.DimensionLoader;
+
+import com.octenexin.inifield.world.dimension.BzDimension;
 import net.minecraft.block.Block;
-import net.minecraft.block.Blocks;
-import net.minecraft.util.RegistryKey;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.registry.Registry;
-import net.minecraft.world.World;
-import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.event.RegistryEvent;
+import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.fml.InterModComms;
-import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.InterModEnqueueEvent;
 import net.minecraftforge.fml.event.lifecycle.InterModProcessEvent;
 import net.minecraftforge.fml.event.server.FMLServerStartingEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
-import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -35,24 +32,75 @@ public class IniField
 {
     // Directly reference a log4j logger.
     public static final Logger LOGGER = LogManager.getLogger();
-    public static final RegistryKey<World> AETHER = RegistryKey.create(Registry.DIMENSION_REGISTRY, new ResourceLocation(Reference.MOD_ID, "aether"));
+    public static ResourceLocation locate(String name)
+    {
+        return new ResourceLocation(Reference.MOD_ID, name);
+    }
 
     public IniField() {
         // Register the setup method for modloading
         IEventBus bus=FMLJavaModLoadingContext.get().getModEventBus();
 
-        bus.addListener(this::setup);
 
         //ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, ZeldaConfig.COMMON_CONFIG);
-        //ItemLoader.ITEMS.register(bus);
-        //BlockLoader.BLOCKS.register(bus);
-        //TileEntityLoader.TILE_ENTITIES.register(bus);
-        EntityLoader.ENTITY_TYPES.register(bus);
 
-        //SoundLoader.SOUNDS.register(bus);
-        //ModStructures.register(bus);
-        //BiomeInit.BIOMES.register(bus);
-        //BiomeInit.registerBiomes();
+
+        //TileEntityLoader.TILE_ENTITIES.register(bus);
+
+
+
+//        BzBlockTags.tagInit(); // Done extra early as some features needs the tag wrapper.
+//        BzItemTags.tagInit();
+//        BzEntityTags.tagInit();
+//        BzFluidTags.tagInit();
+
+        //Events
+//        forgeBus.addListener(BeeAggression::pickupItemAnger);
+//        forgeBus.addListener(EventPriority.LOWEST, BeeAggression::minedBlockAnger); // We want to make sure the block will be broken for angering bees
+//        forgeBus.addListener(WanderingTrades::addWanderingTrades);
+//        forgeBus.addListener(ModdedBeesBeesSpawning::MobSpawnEvent);
+//        forgeBus.addListener(HoneycombBroodEvents::reviveByPotionOfBees);
+//        forgeBus.addListener(CombCutterEnchantment::attemptFasterMining);
+//        forgeBus.addListener(EventPriority.HIGH, EnderpearlImpact::onPearlHit); // High because we want to cancel other mod's impact checks and stuff if it hits a hive.
+//        forgeBus.addGenericListener(Block.class, Bumblezone::missingMappingDimension);
+//        forgeBus.addListener(PotionOfBeesBeeSplashPotionProjectile::ProjectileImpactEvent);
+//        forgeBus.addGenericListener(Entity.class, CapabilityEntityPosAndDim::onAttachCapabilitiesToEntities);
+//        forgeBus.addGenericListener(Entity.class, CapabilityFlyingSpeed::onAttachCapabilitiesToEntities);
+//        forgeBus.addListener(EntityTeleportationHookup::entityTick);
+//        forgeBus.addListener(BeeAggression::playerTick);
+        //forgeBus.addListener(BzWorldSavedData::worldTick);
+
+        //Registration
+        //bus.addListener(DataGenerators::gatherData);
+        bus.addListener(EventPriority.NORMAL, this::setup);
+        //bus.addListener(EventPriority.LOWEST, this::modCompatSetup); //run after all mods
+        //bus.addListener(EventPriority.NORMAL, BzEntities::registerEntityAttributes);
+
+        ModBlocks.BLOCKS.register(bus);
+        ModItems.ITEMS.register(bus);
+        //BzFluids.FLUIDS.register(modEventBus);
+        ModBiomes.BIOMES.register(bus);
+        //BzPOI.POI_TYPES.register(modEventBus);
+        //BzItems.RECIPES.register(modEventBus);
+        //BzEffects.EFFECTS.register(modEventBus);
+        ModFeatures.FEATURES.register(bus);
+        ModEntities.ENTITY_TYPES.register(bus);
+        //BzSounds.SOUND_EVENTS.register(modEventBus);
+        //ModStructures.STRUCTURES.register(bus);
+
+        ModPlacements.DECORATORS.register(bus);
+        ModParticles.PARTICLE_TYPES.register(bus);
+        //BzEnchantments.ENCHANTMENTS.register(modEventBus);
+        ModSurfaceBuilders.SURFACE_BUILDERS.register(bus);
+
+        DistExecutor.safeRunWhenOn(Dist.CLIENT, () -> InifieldClient::subscribeClientEvents);
+
+        /**
+         * I know it's ugly, but forge don't provide trunkPlaceType register
+         * so we use 1.12's way to register trunkPlacer
+         * foliagePlacer/treeDecorator have API, so events works on them
+         * */
+        new ModTreeFeatures();
 
 
         // Register the enqueueIMC method for modloading
@@ -66,50 +114,23 @@ public class IniField
         //MinecraftForge.EVENT_BUS.register(this);
     }
 
+
     private void setup(final FMLCommonSetupEvent event) {
         event.enqueueWork(() -> {
-            LOGGER.info("HELLO FROM PREINIT");
-            LOGGER.info("DIRT BLOCK >> {}", Blocks.DIRT.getRegistryName());
+
+            //BzCriterias.registerCriteriaTriggers();
+            ModProcessors.registerProcessors();
+            BzDimension.setupDimension();
+            ModConfiguredFeatures.registerConfiguredFeatures();
+            //ModConfiguredStructureFeatures.registerConfiguredStructureFeatures();
+            //BzEntities.registerAdditionalEntityInformation();
             //ModStructures.setupStructures();
-            //ModConfiguredStructures.registerConfiguredStructures();
-            DimensionLoader.setupDimension();
 
         });
+
+//        CapabilityEntityPosAndDim.register();
+//        CapabilityFlyingSpeed.register();
     }
 
-    private void doClientStuff(final FMLClientSetupEvent event) {
-        // do something that can only be done on the client
-        LOGGER.info("Got game settings {}", event.getMinecraftSupplier().get().options);
-    }
 
-    private void enqueueIMC(final InterModEnqueueEvent event)
-    {
-        // some example code to dispatch IMC to another mod
-        InterModComms.sendTo("examplemod", "helloworld", () -> { LOGGER.info("Hello world from the MDK"); return "Hello world";});
-    }
-
-    private void processIMC(final InterModProcessEvent event)
-    {
-        // some example code to receive and process InterModComms from other mods
-        LOGGER.info("Got IMC {}", event.getIMCStream().
-                map(m->m.getMessageSupplier().get()).
-                collect(Collectors.toList()));
-    }
-    // You can use SubscribeEvent and let the Event Bus discover methods to call
-    @SubscribeEvent
-    public void onServerStarting(FMLServerStartingEvent event) {
-        // do something when the server starts
-        LOGGER.info("HELLO from server starting");
-    }
-
-    // You can use EventBusSubscriber to automatically subscribe events on the contained class (this is subscribing to the MOD
-    // Event bus for receiving Registry Events)
-    @Mod.EventBusSubscriber(bus=Mod.EventBusSubscriber.Bus.MOD)
-    public static class RegistryEvents {
-        @SubscribeEvent
-        public static void onBlocksRegistry(final RegistryEvent.Register<Block> blockRegistryEvent) {
-            // register a new block here
-            LOGGER.info("HELLO from Register Block");
-        }
-    }
 }
