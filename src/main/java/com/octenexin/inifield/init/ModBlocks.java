@@ -1,5 +1,6 @@
 package com.octenexin.inifield.init;
 
+import com.octenexin.inifield.block.AetherPortal;
 import com.octenexin.inifield.block.CloudBlock;
 import com.octenexin.inifield.block.SnowDropFlower;
 import com.octenexin.inifield.block.WeedGrass;
@@ -42,10 +43,16 @@ public class ModBlocks {
 
 
     public static final RegistryObject<Block> SNOW_DROP_FLOWER=BLOCKS.register("snow_drop_flower",()->new SnowDropFlower(AbstractBlock.Properties.of(Material.REPLACEABLE_PLANT).noCollission().instabreak().sound(SoundType.GRASS).lightLevel((p_235464_0_) -> {
-        return 7;
+        return 12;
     })));
     public static final RegistryObject<Item> SNOW_DROP_FLOWER_ITEM = ModItems.ITEMS.
             register(SNOW_DROP_FLOWER.getId().getPath(), () -> new BlockItem(SNOW_DROP_FLOWER.get(),ModItems.defaultBuilder()));
+
+    public static final RegistryObject<Block> AETHER_PORTAL=BLOCKS.register("aether_portal",()->new AetherPortal(AbstractBlock.Properties.of(Material.PORTAL).sound(SoundType.GRASS).lightLevel((p_235464_0_) -> {
+        return 15;
+    })));
+    public static final RegistryObject<Item> AETHER_PORTAL_ITEM = ModItems.ITEMS.
+            register(AETHER_PORTAL.getId().getPath(), () -> new BlockItem(AETHER_PORTAL.get(),ModItems.defaultBuilder()));
 
 
     private static Boolean never(BlockState p_235427_0_, IBlockReader p_235427_1_, BlockPos p_235427_2_, EntityType<?> p_235427_3_) {

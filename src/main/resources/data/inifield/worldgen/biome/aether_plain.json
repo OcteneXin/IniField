@@ -29,16 +29,13 @@
       "minecraft:plain_vegetation",
       "minecraft:flower_plain_decorated",
       "minecraft:patch_grass_plain",
-      "minecraft:brown_mushroom_normal",
-      "minecraft:red_mushroom_normal",
-      "minecraft:patch_sugar_cane",
-      "minecraft:patch_pumpkin",
       "minecraft:spring_water",
       "minecraft:spring_lava",
-      "inifield:patch_diamond",
-      "inifield:world_tree",
-      "inifield:patch_snow_drop_flower"
-      ],
+      "inifield:patch_command_block",
+      "inifield:patch_snow_drop_flower",
+      "inifield:cmd_cube",
+      "inifield:world_tree"
+    ],
     []
   ],
   "starts": [],

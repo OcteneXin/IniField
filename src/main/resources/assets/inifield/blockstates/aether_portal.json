@@ -1,0 +1,100 @@
+{
+  "variants": {
+    "facing=east,half=lower,hinge=left,open=false": {
+      "model": "inifield:block/aether_belc"
+    },
+    "facing=east,half=lower,hinge=left,open=true": {
+      "model": "inifield:block/aether_belo"
+    },
+    "facing=east,half=lower,hinge=right,open=false": {
+      "model": "inifield:block/aether_berc"
+    },
+    "facing=east,half=lower,hinge=right,open=true": {
+      "model": "inifield:block/aether_bero"
+    },
+    "facing=east,half=upper,hinge=left,open=false": {
+      "model": "inifield:block/aether_telc"
+    },
+    "facing=east,half=upper,hinge=left,open=true": {
+      "model": "inifield:block/aether_telo"
+    },
+    "facing=east,half=upper,hinge=right,open=false": {
+      "model": "inifield:block/aether_terc"
+    },
+    "facing=east,half=upper,hinge=right,open=true": {
+      "model": "inifield:block/aether_tero"
+    },
+    "facing=north,half=lower,hinge=left,open=false": {
+      "model": "inifield:block/aether_bnlc"
+    },
+    "facing=north,half=lower,hinge=left,open=true": {
+      "model": "inifield:block/aether_bnlo"
+    },
+    "facing=north,half=lower,hinge=right,open=false": {
+      "model": "inifield:block/aether_bnrc"
+    },
+    "facing=north,half=lower,hinge=right,open=true": {
+      "model": "inifield:block/aether_bnro"
+    },
+    "facing=north,half=upper,hinge=left,open=false": {
+      "model": "inifield:block/aether_tnlc"
+    },
+    "facing=north,half=upper,hinge=left,open=true": {
+      "model": "inifield:block/aether_tnlo"
+    },
+    "facing=north,half=upper,hinge=right,open=false": {
+      "model": "inifield:block/aether_tnrc"
+    },
+    "facing=north,half=upper,hinge=right,open=true": {
+      "model": "inifield:block/aether_tnro"
+    },
+    "facing=south,half=lower,hinge=left,open=false": {
+      "model": "inifield:block/aether_bslc"
+    },
+    "facing=south,half=lower,hinge=left,open=true": {
+      "model": "inifield:block/aether_bslo"
+    },
+    "facing=south,half=lower,hinge=right,open=false": {
+      "model": "inifield:block/aether_bsrc"
+    },
+    "facing=south,half=lower,hinge=right,open=true": {
+      "model": "inifield:block/aether_bsro"
+    },
+    "facing=south,half=upper,hinge=left,open=false": {
+      "model": "inifield:block/aether_tslc"
+    },
+    "facing=south,half=upper,hinge=left,open=true": {
+      "model": "inifield:block/aether_tslo"
+    },
+    "facing=south,half=upper,hinge=right,open=false": {
+      "model": "inifield:block/aether_tsrc"
+    },
+    "facing=south,half=upper,hinge=right,open=true": {
+      "model": "inifield:block/aether_tsro"
+    },
+    "facing=west,half=lower,hinge=left,open=false": {
+      "model": "inifield:block/aether_bwlc"
+    },
+    "facing=west,half=lower,hinge=left,open=true": {
+      "model": "inifield:block/aether_bwlo"
+    },
+    "facing=west,half=lower,hinge=right,open=false": {
+      "model": "inifield:block/aether_bwrc"
+    },
+    "facing=west,half=lower,hinge=right,open=true": {
+      "model": "inifield:block/aether_bwro"
+    },
+    "facing=west,half=upper,hinge=left,open=false": {
+      "model": "inifield:block/aether_twlc"
+    },
+    "facing=west,half=upper,hinge=left,open=true": {
+      "model": "inifield:block/aether_twlo"
+    },
+    "facing=west,half=upper,hinge=right,open=false": {
+      "model": "inifield:block/aether_twrc"
+    },
+    "facing=west,half=upper,hinge=right,open=true": {
+      "model": "inifield:block/aether_twro"
+    }
+  }
+}

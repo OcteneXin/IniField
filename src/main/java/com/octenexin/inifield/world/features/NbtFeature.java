@@ -51,18 +51,18 @@ public class NbtFeature extends Feature<NbtFeatureConfig>{
         position = position.above(config.structureYOffset);
 
         PlacementSettings placementsettings = (new PlacementSettings()).setRotation(rotation).setRotationPivot(halfLengths).setIgnoreEntities(false);
-        Optional<StructureProcessorList> processor = world.getLevel().getServer().registryAccess().registryOrThrow(Registry.PROCESSOR_LIST_REGISTRY).getOptional(config.processor);
-        processor.orElse(ProcessorLists.EMPTY).list().forEach(placementsettings::addProcessor); // add all processors
+//        Optional<StructureProcessorList> processor = world.getLevel().getServer().registryAccess().registryOrThrow(Registry.PROCESSOR_LIST_REGISTRY).getOptional(config.processor);
+//        processor.orElse(ProcessorLists.EMPTY).list().forEach(placementsettings::addProcessor); // add all processors
         template.placeInWorld(world, mutable.set(position).move(-halfLengths.getX(), 0, -halfLengths.getZ()), placementsettings, random);
 
         // Post-processors
         // For all processors that are sensitive to neighboring blocks such as vines.
         // Post processors will place the blocks themselves so we will not do anything with the return of Structure.process
-        placementsettings.clearProcessors();
-        Optional<StructureProcessorList> postProcessor = world.getLevel().getServer().registryAccess().registryOrThrow(Registry.PROCESSOR_LIST_REGISTRY).getOptional(config.postProcessor);
-        postProcessor.orElse(ProcessorLists.EMPTY).list().forEach(placementsettings::addProcessor); // add all post processors
-        List<Template.BlockInfo> list = placementsettings.getRandomPalette(((TemplateAccessor)template).inifield_getBlocks(), mutable).blocks();
-        Template.processBlockInfos(world, mutable, mutable, placementsettings, list);
+//        placementsettings.clearProcessors();
+//        Optional<StructureProcessorList> postProcessor = world.getLevel().getServer().registryAccess().registryOrThrow(Registry.PROCESSOR_LIST_REGISTRY).getOptional(config.postProcessor);
+//        postProcessor.orElse(ProcessorLists.EMPTY).list().forEach(placementsettings::addProcessor); // add all post processors
+//        List<Template.BlockInfo> list = placementsettings.getRandomPalette(((TemplateAccessor)template).inifield_getBlocks(), mutable).blocks();
+//        Template.processBlockInfos(world, mutable, mutable, placementsettings, list);
 
         return true;
     }

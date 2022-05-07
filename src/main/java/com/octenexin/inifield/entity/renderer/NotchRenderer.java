@@ -8,14 +8,14 @@ import net.minecraft.client.renderer.entity.EntityRendererManager;
 import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.util.ResourceLocation;
 
-public class NotchRenerder extends MobRenderer<Notch,ModelNotch>{
+public class NotchRenderer extends MobRenderer<Notch,ModelNotch>{
 
-    public NotchRenerder(EntityRendererManager renderManagerIn, ModelNotch entityModelIn, float shadowSizeIn) {
+    public NotchRenderer(EntityRendererManager renderManagerIn, ModelNotch entityModelIn, float shadowSizeIn) {
         super(renderManagerIn, entityModelIn, shadowSizeIn);
 
     }
-    public NotchRenerder(EntityRendererManager renderManagerIn) {
-        super(renderManagerIn, new ModelNotch(), 0.7F);
+    public NotchRenderer(EntityRendererManager renderManagerIn) {
+        super(renderManagerIn, new ModelNotch(), 0.5F);
 
     }
     @Override

@@ -81,6 +81,7 @@ public class ModTreeFeatures {
 
       public static final Placement<ChanceConfig> WORLD_TREE_PLACEMENT = new WorldTreePlacement(ChanceConfig.CODEC);
 
+
       public static final ConfiguredPlacement<?> CONFIGURED_WORLD_TREE_PLACEMENT = WORLD_TREE_PLACEMENT.configured(new ChanceConfig(16));
 //    public static final ConfiguredPlacement<?> CONFIGURED_PLACEMENT_NOTFSTRUCTURE_WITHHEIGHTMAP = CONFIGURED_PLACEMENT_NOTFSTRUCTURE.withPlacement(Placement.HEIGHTMAP.configure(NoPlacementConfig.INSTANCE));
 

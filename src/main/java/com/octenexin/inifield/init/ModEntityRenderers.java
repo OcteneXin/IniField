@@ -1,20 +1,23 @@
 package com.octenexin.inifield.init;
 
-import com.octenexin.inifield.entity.renderer.NotchRenerder;
-import com.octenexin.inifield.init.ModEntities;
+import com.octenexin.inifield.entity.renderer.NotchRenderer;
+import com.octenexin.inifield.entity.renderer.ThrowableTNTRenderer;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.entity.EntityRendererManager;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraft.client.renderer.entity.SpriteRenderer;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 
-@Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
+
 public class ModEntityRenderers {
-    @SubscribeEvent
-    public static void onClientSetUpEvent(FMLClientSetupEvent event) {
+
+    public static void registerEntityRenderers() {
         RenderingRegistry.registerEntityRenderingHandler(ModEntities.NOTCH.get(), (EntityRendererManager manager) -> {
-            return new NotchRenerder(manager);
+            return new NotchRenderer(manager);
+        });
+
+
+        RenderingRegistry.registerEntityRenderingHandler(ModEntities.THROWABLE_TNT.get(), (EntityRendererManager manager) -> {
+            return new ThrowableTNTRenderer(manager);
         });
     }
 }

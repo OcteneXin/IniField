@@ -1,0 +1,40 @@
+{
+	"credit": "Made with Blockbench",
+	"ambientocclusion": false,
+	"textures": {
+		"particle": "inifield:blocks/aether_portal_top",
+		"bottom": "inifield:blocks/aether_portal_bottom",
+		"pic": "inifield:blocks/aether_portal_inner"
+	},
+	"elements": [
+		{
+			"from": [0, 0, 13],
+			"to": [16, 16, 16],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 0, 8]},
+			"faces": {
+				"north": {"uv": [0, 0, 16, 16], "texture": "#bottom"},
+				"east": {"uv": [0, 0, 3, 16], "texture": "#bottom"},
+				"south": {"uv": [16, 0, 0, 16], "texture": "#bottom"},
+				"west": {"uv": [3, 0, 0, 16], "texture": "#bottom"},
+				"up": {"uv": [13, 0, 16, 16], "rotation": 90, "texture": "#bottom", "cullface": "up"}
+			}
+		},
+		{
+			"from": [0, 0, 14.5],
+			"to": [16, 16, 14.5],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 0, 8]},
+			"faces": {
+				"north": {"uv": [16, 0, 0, 16], "texture": "#pic"},
+				"south": {"uv": [0, 0, 16, 16], "texture": "#pic"}
+			}
+		}
+	],
+	"groups": [
+		{
+			"name": "aether_portal_bottom",
+			"origin": [8, 8, 8],
+			"color": 0,
+			"children": [0, 1]
+		}
+	]
+}

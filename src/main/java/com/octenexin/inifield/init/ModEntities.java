@@ -1,6 +1,7 @@
 package com.octenexin.inifield.init;
 
 import com.octenexin.inifield.entity.Notch;
+import com.octenexin.inifield.entity.ThrowableTNTEntity;
 import com.octenexin.inifield.utils.Reference;
 import net.minecraft.entity.EntityClassification;
 import net.minecraft.entity.EntityType;
@@ -22,6 +23,7 @@ import java.lang.reflect.Field;
 public class ModEntities {
     public static final DeferredRegister<EntityType<?>> ENTITY_TYPES = DeferredRegister.create(ForgeRegistries.ENTITIES, Reference.MOD_ID);
     public static final RegistryObject<EntityType<Notch>> NOTCH = ENTITY_TYPES.register("notch", () -> EntityType.Builder.of(Notch::new, EntityClassification.MONSTER).sized(1, 2).build("notch"));
+    public static final RegistryObject<EntityType<ThrowableTNTEntity>> THROWABLE_TNT = ENTITY_TYPES.register("throwable_tnt", () -> EntityType.Builder.<ThrowableTNTEntity>of(ThrowableTNTEntity::new, EntityClassification.MISC).sized(0.25F, 0.25F).clientTrackingRange(4).updateInterval(10).build("throwable_tnt"));
 
 
     @SubscribeEvent

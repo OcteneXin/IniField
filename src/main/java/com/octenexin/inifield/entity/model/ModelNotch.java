@@ -11,6 +11,7 @@ import net.minecraft.client.renderer.entity.model.BipedModel;
 import net.minecraft.client.renderer.entity.model.EntityModel;
 import net.minecraft.client.renderer.model.ModelRenderer;
 import net.minecraft.entity.Entity;
+import net.minecraft.inventory.EquipmentSlotType;
 
 public class ModelNotch extends BipedModel<Notch> {
 	private final ModelRenderer cape;
@@ -19,7 +20,7 @@ public class ModelNotch extends BipedModel<Notch> {
 		super(0.0F,0.0F,64,64);
 
 		cape = new ModelRenderer(this);
-		cape.setPos(0.0F, -24.0F, 2.0F);
+		cape.setPos(0.0F, 0.0F, 2.0F);
 		setRotationAngle(cape, 0.0873F, 0.0F, 0.0F);
 		cape.texOffs(0, 48).addBox(-4.0F, 0.0F, 0.0F, 8.0F, 14.0F, 0.0F, 0.0F, false);
 
@@ -30,6 +31,18 @@ public class ModelNotch extends BipedModel<Notch> {
 		modelRenderer.xRot = x;
 		modelRenderer.yRot = y;
 		modelRenderer.zRot = z;
+	}
+
+	@Override
+	public void setupAnim(Notch p_225597_1_, float p_225597_2_, float p_225597_3_, float p_225597_4_, float p_225597_5_, float p_225597_6_) {
+		super.setupAnim(p_225597_1_, p_225597_2_, p_225597_3_, p_225597_4_, p_225597_5_, p_225597_6_);
+		if (p_225597_1_.isCrouching()) {
+			this.cape.z = 1.4F;
+			this.cape.y = 1.85F;
+		} else {
+			this.cape.z = 0.0F;
+			this.cape.y = 0.0F;
+		}
 	}
 
 	@Override
