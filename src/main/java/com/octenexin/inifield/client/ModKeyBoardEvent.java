@@ -2,6 +2,7 @@ package com.octenexin.inifield.client;
 
 import com.octenexin.inifield.client.gui.SimpleDialog;
 import com.octenexin.inifield.entity.Notch;
+import com.octenexin.inifield.utils.DecisionNode;
 import com.octenexin.inifield.utils.ModGeneralUtils;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
@@ -49,74 +50,30 @@ public class ModKeyBoardEvent {
                 entity=((EntityRayTraceResult)result).getEntity();
 
                 if(entity instanceof Notch){
-                    Minecraft.getInstance().setScreen(new SimpleDialog("nc_dialog.png","inifield.talk.overworld.notch.pacific.first.stage_0",25){
 
-                        @Override
-                        public void toggleDialog(){
-                            assert this.minecraft != null;
-                            if(getProcess()==0){
-                                reset();
-                                setCurMainLine("inifield.talk.overworld.notch.pacific.first.stage_1");
-                                increaseProcess();
-                            }else if(getProcess()==1){
-                                reset();
-                                setCurLines("inifield.talk.overworld.notch.pacific.first.stage_2","inifield.talk.overworld.notch.pacific.first.pl_choice0","inifield.talk.overworld.notch.pacific.first.pl_choice1");
-                                increaseProcess();
-                            }
-                            else if(getProcess()==2){
-                                if(isRight()){
-                                    reset();
-                                    setCurMainLine("inifield.talk.overworld.notch.pacific.first.ver1_stage_3");
-                                    increaseProcess();
-                                }else {
-                                    reset();
-                                    setCurMainLine("inifield.talk.overworld.notch.pacific.first.ver0_stage_3");
-                                    increaseProcess();
-                                }
-                            }
-                            else if(getProcess()==3){
-                                if(getLastChoice()){
-                                    reset();
-                                    setCurMainLine("inifield.talk.overworld.notch.pacific.first.ver1_stage_4");
-                                    increaseProcess();
-                                }else{
-                                    this.minecraft.setScreen((Screen)null);
-                                }
-                            }
-                            else {
-                                this.minecraft.setScreen((Screen)null);
-                            }
-                        }
-                    });
+                    //gen decision tree
+                    DecisionNode node1=new DecisionNode(true,"inifield.talk.overworld.notch.pacific.first.stage_1");
+                    DecisionNode node2=new DecisionNode(false,"inifield.talk.overworld.notch.pacific.first.stage_2","inifield.talk.overworld.notch.pacific.first.pl_choice0","inifield.talk.overworld.notch.pacific.first.pl_choice1");
+                    DecisionNode node3=new DecisionNode(true,"inifield.talk.overworld.notch.pacific.first.ver0_stage_3");
+                    DecisionNode node4=new DecisionNode(true,"inifield.talk.overworld.notch.pacific.first.ver1_stage_3");
+                    DecisionNode node5=new DecisionNode(true,"inifield.talk.overworld.notch.pacific.first.ver1_stage_4");
+                    //link node
+                    node1.setRight(node2);
+                    node2.setLeft(node3);
+                    node2.setRight(node4);
+                    node4.setRight(node5);
+
+
+                    Minecraft.getInstance().setScreen(new SimpleDialog("nc_dialog.png",25,node1));
                 }
 
             }
             else if(result.getType()==RayTraceResult.Type.BLOCK){
                 block=world.getBlockState(((BlockRayTraceResult)result).getBlockPos()).getBlock();
 
+                DecisionNode node1=new DecisionNode(true,"inifield.look.overworld.grass");
                 if(block== Blocks.GRASS_BLOCK){
-                    Minecraft.getInstance().setScreen(new SimpleDialog("small_dialog.png","inifield.look.overworld.grass","inifield.test.pl_choice0","inifield.test.pl_choice1",25){
-
-                        @Override
-                        public void toggleDialog(){
-                            if(isRight()){
-                                if(getProcess()==0){
-                                    reset();
-                                    setCurMainLine("inifield.look.overworld.cobblestone");
-                                    increaseProcess();
-                                }else if(getProcess()==1){
-                                    reset();
-                                    setCurMainLine("inifield.look.overworld.stone");
-                                    increaseProcess();
-                                }else {
-                                    this.minecraft.setScreen((Screen)null);
-                                }
-
-                            }else {
-                                this.minecraft.setScreen((Screen)null);
-                            }
-                        }
-                    });
+                    Minecraft.getInstance().setScreen(new SimpleDialog("small_dialog.png",30,node1));
                 }
             }
 

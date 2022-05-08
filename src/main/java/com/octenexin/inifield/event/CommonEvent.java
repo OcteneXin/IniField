@@ -94,7 +94,6 @@ public class CommonEvent {
             //attemptSendPlayer(entity,true);
             Minecraft minecraft=Minecraft.getInstance();
 
-            minecraft.setScreen(new SimpleDialog("small_dialog.png","inifield.look.overworld.grass","inifield.test.pl_choice0","inifield.test.pl_choice1",30));
         }
     }
 

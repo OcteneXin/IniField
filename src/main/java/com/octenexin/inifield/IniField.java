@@ -28,6 +28,7 @@ public class IniField
     }
 
     /**
+     * TODO
      * Inifield will work on these part:
      * Entity:
      *      root
@@ -122,6 +123,13 @@ public class IniField
      *      Show dialog: using dialog screen helper
      *          may add options
      *      Dialog-based story event
+     *      Built-in coding window
+     *
+     * Global Modify
+     *      Lv: additional bar, calc amount of kills
+     *      Growing ability
+     *      A whole story mechanic
+     *
      *
      *
      * */

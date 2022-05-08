@@ -3,6 +3,7 @@ package com.octenexin.inifield.client.gui;
 import com.mojang.blaze3d.matrix.MatrixStack;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.octenexin.inifield.IniField;
+import com.octenexin.inifield.utils.DecisionNode;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.widget.Widget;
 import net.minecraft.client.gui.widget.button.Button;
@@ -22,56 +23,14 @@ public class SimpleDialog extends Screen {
     private boolean isActive;
     private boolean isRight;
     private int mainLineLen;
-    private String curMainLine="";
-    private String curLeftLine="";
-    private String curRightLine="";
-    private int process;
-    private boolean lastChoice;
 
-    public int getProcess() {
-        return process;
-    }
+    private DecisionNode root;
 
-    public void increaseProcess(){
-        ++process;
-    }
-
-    public boolean isRight() {
-        return isRight;
-    }
-
-    public boolean getLastChoice(){return lastChoice;}
-
-    public void setCurMainLine(String curMainLine) {
-        this.curMainLine = curMainLine;
-        this.curLeftLine="";
-        this.curRightLine="";
-    }
-
-    public void setCurLines(String curMainLine,String curLeftLine,String curRightLine) {
-        this.curMainLine = curMainLine;
-        this.curLeftLine=curLeftLine;
-        this.curRightLine=curRightLine;
-
-        IniField.LOGGER.debug(curMainLine);
-        IniField.LOGGER.debug(curLeftLine);
-        IniField.LOGGER.debug(curRightLine);
-    }
-
-    private SimpleDialog(String textureLoc,int defaultSplit) {
+    public SimpleDialog(String textureLoc, int defaultSplit, DecisionNode root) {
         super(new TranslationTextComponent(""));
         this.textureLoc=new ResourceLocation("inifield:textures/gui/" + textureLoc);
         this.defaultSplit=defaultSplit;
-    }
-
-    public SimpleDialog(String textureLoc,String str1,String str2,String str3,int defaultSplit) {
-        this(textureLoc,defaultSplit);
-        setCurLines(str1,str2,str3);
-    }
-
-    public SimpleDialog(String textureLoc,String str1,int defaultSplit){
-        this(textureLoc,defaultSplit);
-        setCurMainLine(str1);
+        this.root=root;
     }
 
     protected void init() {
@@ -80,8 +39,6 @@ public class SimpleDialog extends Screen {
         charSum=0;
         isActive=false;
         isRight=true;
-        process=0;
-        lastChoice=true;
     }
 
     public void reset(){
@@ -105,10 +62,10 @@ public class SimpleDialog extends Screen {
 
         //render line
         RenderSystem.scalef(1.5F, 1.5F, 1.5F);
-        if(curLeftLine.length()!=0){
-            renderChoicesDialog(p_230430_1_,curMainLine,curLeftLine,curRightLine);
+        if(root.isLine()){
+            renderLine(p_230430_1_,root.getMainLine());
         }else {
-            renderLine(p_230430_1_,curMainLine);
+            renderChoicesDialog(p_230430_1_,root.getMainLine(), root.getLeftChoice(),root.getRightChoice());
         }
         RenderSystem.popMatrix();
 
@@ -119,9 +76,7 @@ public class SimpleDialog extends Screen {
     public boolean mouseClicked(double p_231044_1_, double p_231044_3_, int p_231044_5_) {
 
         IniField.LOGGER.debug("x="+p_231044_1_+",y="+p_231044_3_);
-        IniField.LOGGER.debug(curMainLine);
-        IniField.LOGGER.debug(curLeftLine);
-        IniField.LOGGER.debug(curRightLine);
+
         //this.minecraft.setScreen((Screen)null);
         return true;
     }
@@ -167,16 +122,22 @@ public class SimpleDialog extends Screen {
         }
 
         if(isActive){
-            if(p_231046_1_== 263||p_231046_1_==262){//left,right
+            if((!root.isLine())&&(p_231046_1_== 263||p_231046_1_==262)){//left,right
                 isRight=!isRight;
             }
 
             if(p_231046_1_==257){//enter
-                if(curLeftLine.length()!=0){
-                    lastChoice= isRight;
-                }
 
-                toggleDialog();
+                //select road
+                if(isRight){
+                    root=root.getRight();
+                }else {
+                    root=root.getLeft();
+                }
+                reset();
+                if(root==null)this.minecraft.setScreen((Screen)null);
+
+
             }
         }
 
@@ -184,21 +145,6 @@ public class SimpleDialog extends Screen {
         IniField.LOGGER.debug(p_231046_1_);
 
         return super.keyPressed(p_231046_1_, p_231046_2_, p_231046_3_);
-    }
-
-    public void toggleDialog(){
-        if(isRight()){
-            if(process==0){
-                reset();
-                setCurMainLine("inifield.look.overworld.cobblestone");
-                ++process;
-            }else {
-                this.minecraft.setScreen((Screen)null);
-            }
-
-        }else {
-            this.minecraft.setScreen((Screen)null);
-        }
     }
 
     public boolean isPauseScreen() {
@@ -281,6 +227,8 @@ public class SimpleDialog extends Screen {
         }
 
     }
+
+
 
 
 
