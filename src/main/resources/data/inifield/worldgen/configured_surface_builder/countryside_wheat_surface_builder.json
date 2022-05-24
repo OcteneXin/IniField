@@ -1,5 +1,4 @@
 {
-  "type": "inifield:grass_surface_builder",
   "config": {
     "top_material": {
       "Name": "minecraft:grass_block",
@@ -8,13 +7,11 @@
       }
     },
     "under_material": {
-      "Name": "minecraft:farmland",
-      "Properties": {
-        "moisture": 7
-      }
+      "Name": "minecraft:dirt"
     },
     "underwater_material": {
       "Name": "minecraft:gravel"
     }
-  }
+  },
+  "type": "inifield:countryside_wheat_surface_builder"
 }

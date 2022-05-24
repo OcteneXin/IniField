@@ -12,6 +12,10 @@
   "block.inifield.snow_drop_flower":"Snow Drop Flower",
   "block.inifield.aether_portal":"Aether Portal",
 
+  "biome.inifield.countryside_wheat": "Countryside wheat",
+  "biome.inifield.aether_plain": "Aether Plain",
+  "biome.inifield.furry_cloud_plain": "Furry Cloud Plain",
+
   "inifield.loading.title.enter": "A land on the cloud...",
 
   "itemGroup.inifield":"IniField",

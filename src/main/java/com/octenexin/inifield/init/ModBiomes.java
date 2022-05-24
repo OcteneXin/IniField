@@ -1,8 +1,13 @@
 package com.octenexin.inifield.init;
 
+import com.octenexin.inifield.IniField;
 import com.octenexin.inifield.utils.Reference;
+import net.minecraft.util.RegistryKey;
+import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.registry.Registry;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.BiomeMaker;
+import net.minecraftforge.common.BiomeManager;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -19,9 +24,26 @@ public class ModBiomes {
         createBiome("aether_plain", BiomeMaker::theVoidBiome);
         createBiome("furry_cloud_plain", BiomeMaker::theVoidBiome);
         createBiome("metasequoia_patch", BiomeMaker::theVoidBiome);
+        createBiome("countryside_wheat", BiomeMaker::theVoidBiome);
+        createBiome("city", BiomeMaker::theVoidBiome);
     }
 
     public static RegistryObject<Biome> createBiome(String name, Supplier<Biome> biome) {
         return BIOMES.register(name, biome);
     }
+
+    public static final RegistryKey<Biome> COUNTRYSIDE_WHEAT=registerBiome("countryside_wheat");
+    public static final RegistryKey<Biome> CITY=registerBiome("city");
+    //more
+
+    public static RegistryKey<Biome> registerBiome(String biomeName) {
+        return RegistryKey.create(Registry.BIOME_REGISTRY, IniField.locate(biomeName));
+    }
+
+    //not use, we add them at CommonSetupEvent.java
+    public static void registerBiomes(){
+        BiomeManager.addAdditionalOverworldBiomes(COUNTRYSIDE_WHEAT);
+        BiomeManager.addAdditionalOverworldBiomes(CITY);
+    }
+
 }

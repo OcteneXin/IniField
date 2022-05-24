@@ -176,6 +176,7 @@ public class IniField
         ModItems.ITEMS.register(bus);
         //BzFluids.FLUIDS.register(modEventBus);
         ModBiomes.BIOMES.register(bus);
+
         //BzPOI.POI_TYPES.register(modEventBus);
         //BzItems.RECIPES.register(modEventBus);
         //BzEffects.EFFECTS.register(modEventBus);
