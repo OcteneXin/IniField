@@ -1,0 +1,24 @@
+{
+  "name": "inifield:wheat_houses",
+  "fallback": "inifield:terminators",
+  "elements": [
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "rigid",
+        "location": "inifield:broken_barn1",
+        "processors": "minecraft:empty"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "rigid",
+        "location": "inifield:wheat_mill",
+        "processors": "minecraft:empty"
+      }
+    }
+  ]
+}

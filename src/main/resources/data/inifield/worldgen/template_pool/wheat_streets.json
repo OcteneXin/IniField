@@ -1,0 +1,33 @@
+{
+  "name": "inifield:wheat_streets",
+  "fallback": "inifield:terminators",
+  "elements": [
+    {
+      "weight": 1,
+      "element": {
+        "location": "inifield:wheat_street_straight_01",
+        "processors": "minecraft:empty",
+        "projection": "terrain_matching",
+        "element_type": "minecraft:legacy_single_pool_element"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "location": "inifield:wheat_street_straight_02",
+        "processors": "minecraft:empty",
+        "projection": "terrain_matching",
+        "element_type": "minecraft:legacy_single_pool_element"
+      }
+    },
+    {
+      "weight": 10,
+      "element": {
+        "location": "inifield:wheat_street_corner_01",
+        "processors": "minecraft:empty",
+        "projection": "terrain_matching",
+        "element_type": "minecraft:legacy_single_pool_element"
+      }
+    }
+  ]
+}

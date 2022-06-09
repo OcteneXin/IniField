@@ -17,65 +17,40 @@ import net.minecraft.world.IBlockReader;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.provider.BiomeProvider;
 import net.minecraft.world.gen.ChunkGenerator;
-import net.minecraft.world.gen.GenerationStage;
 import net.minecraft.world.gen.feature.NoFeatureConfig;
 import net.minecraft.world.gen.feature.jigsaw.JigsawManager;
 import net.minecraft.world.gen.feature.structure.*;
 import net.minecraft.world.gen.feature.template.TemplateManager;
 
-public class CbCubeStructure extends Structure<NoFeatureConfig> {
-
-    public CbCubeStructure(Codec<NoFeatureConfig> codec) {
-        super(codec);
+public class CountrysideStructure extends JigsawStructure {
+    public CountrysideStructure(Codec<VillageConfig> p_i241978_1_) {
+        super(p_i241978_1_, 0,true,true);
     }
 
     @Override
-    public IStartFactory<NoFeatureConfig> getStartFactory() {
-        return CbCubeStructure.Start::new;
+    public IStartFactory<VillageConfig> getStartFactory() {
+        return CountrysideStructure.Start::new;
     }
 
     @Override
-    public boolean isFeatureChunk(ChunkGenerator chunkGenerator, BiomeProvider biomeProvider, long seed, SharedSeedRandom random, int chunkX, int chunkZ, Biome biome, ChunkPos chunkPos, NoFeatureConfig config) {
-
+    public boolean isFeatureChunk(ChunkGenerator chunkGenerator, BiomeProvider biomeProvider, long seed, SharedSeedRandom random, int chunkX, int chunkZ, Biome biome, ChunkPos chunkPos, VillageConfig config) {
         return true;
-    }
-
-    // Takes into account how bumblezone's terrain is bottom half reflected across top half.
-    // chunkGenerator.getBaseColumn returns column of blocks as if the terrain wasn't mirrored.
-    private static void moveMutable(BlockPos.Mutable mutable, Direction direction, int amount, BlockPos originalPos) {
-        if(originalPos.getY() > 128) {
-            if(mutable.getY() > 128) {
-                mutable.move(Direction.DOWN, (mutable.getY() - 128) * 2);
-            }
-            mutable.move(direction.getOpposite(), amount);
-        }
-        else {
-            mutable.move(direction, amount);
-            if(mutable.getY() > 128) {
-                mutable.move(direction.getOpposite(), mutable.getY() - 128);
-            }
-        }
-    }
-
-    @Override
-    public GenerationStage.Decoration step() {
-        return GenerationStage.Decoration.LOCAL_MODIFICATIONS;
     }
 
     /**
      * Handles calling up the structure's pieces class and height that structure will spawn at.
      */
-    public static class Start extends StructureStart<NoFeatureConfig>  {
+    public static class Start extends StructureStart<VillageConfig> {
 
         private final long seed;
 
-        public Start(Structure<NoFeatureConfig> structureIn, int chunkX, int chunkZ, MutableBoundingBox mutableBoundingBox, int referenceIn, long seedIn) {
+        public Start(Structure<VillageConfig> structureIn, int chunkX, int chunkZ, MutableBoundingBox mutableBoundingBox, int referenceIn, long seedIn) {
             super(structureIn, chunkX, chunkZ, mutableBoundingBox, referenceIn, seedIn);
             seed = seedIn;
         }
 
         @Override
-        public void generatePieces(DynamicRegistries dynamicRegistryManager, ChunkGenerator chunkGenerator, TemplateManager templateManagerIn, int chunkX, int chunkZ, Biome biomeIn, NoFeatureConfig config) {
+        public void generatePieces(DynamicRegistries dynamicRegistryManager, ChunkGenerator chunkGenerator, TemplateManager templateManagerIn, int chunkX, int chunkZ, Biome biomeIn, VillageConfig config) {
             int x = chunkX << 4+7;
             int z = chunkZ << 4+7;
 
@@ -89,14 +64,14 @@ public class CbCubeStructure extends Structure<NoFeatureConfig> {
                 mutable.move(Direction.DOWN);
             }
             if(y==0){
-                y=95;
+                y=64;
             }
 
             BlockPos centerPos = new BlockPos(x, y+1, z);
 
             JigsawManager.addPieces(
                     dynamicRegistryManager,
-                    new VillageConfig(() -> dynamicRegistryManager.registryOrThrow(Registry.TEMPLATE_POOL_REGISTRY).get(new ResourceLocation(Reference.MOD_ID,"cb_cube")), 12),
+                    new VillageConfig(() -> dynamicRegistryManager.registryOrThrow(Registry.TEMPLATE_POOL_REGISTRY).get(new ResourceLocation(Reference.MOD_ID,"broken_barn")), 7),
                     AbstractVillagePiece::new,
                     chunkGenerator,
                     templateManagerIn,
@@ -118,7 +93,7 @@ public class CbCubeStructure extends Structure<NoFeatureConfig> {
             // Sets the bounds of the structure once you are finished.
             this.calculateBoundingBox();
 
-            IniField.LOGGER.debug("generated cb_cube at "
+            IniField.LOGGER.debug("generated countryside_wheat at "
                     +this.pieces.get(0).getBoundingBox().x0+" "
                     +this.pieces.get(0).getBoundingBox().y0+" "
                     +this.pieces.get(0).getBoundingBox().z0);

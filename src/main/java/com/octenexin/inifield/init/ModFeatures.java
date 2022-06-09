@@ -28,5 +28,6 @@ public class ModFeatures {
     public static final RegistryObject<Feature<NbtFeatureConfig>> MILKTEA_STORE = FEATURES.register("milktea_store", () -> new FeatureBarn(NbtFeatureConfig.CODEC));
     public static final RegistryObject<Feature<NbtFeatureConfig>> COUNTRY_MARKET = FEATURES.register("country_market", () -> new FeatureBarn(NbtFeatureConfig.CODEC));
     public static final RegistryObject<Feature<NbtFeatureConfig>> ROUND_SPACE = FEATURES.register("round_space", () -> new FeatureBarn(NbtFeatureConfig.CODEC));
+    public static final RegistryObject<Feature<NbtFeatureConfig>> TEST_VILLAGE = FEATURES.register("test_village", () -> new FeatureBarn(NbtFeatureConfig.CODEC));
 
 }

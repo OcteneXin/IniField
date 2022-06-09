@@ -1,0 +1,33 @@
+{
+  "name": "inifield:bridges",
+  "fallback": "inifield:terminators",
+  "elements": [
+    {
+      "weight": 4,
+      "element": {
+        "location": "inifield:bridge_straight_01",
+        "processors": "minecraft:empty",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "location": "inifield:bridge_corner_01",
+        "processors": "minecraft:empty",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "location": "inifield:bridge_corner_down_01",
+        "processors": "minecraft:empty",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    }
+  ]
+}

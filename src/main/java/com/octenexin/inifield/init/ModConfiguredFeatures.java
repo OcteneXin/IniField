@@ -146,6 +146,14 @@ public class ModConfiguredFeatures {
             )).decorated(Features.Placements.HEIGHTMAP_SQUARE).chance(100);
 
 
+    public static final ConfiguredFeature<?, ?> TEST_VILLAGE = ModFeatures.TEST_VILLAGE.get().configured(
+            new NbtFeatureConfig(
+                    new ResourceLocation("empty"),
+                    new ResourceLocation("empty"),
+                    ImmutableList.of(Pair.of(new ResourceLocation(Reference.MOD_ID, "milktea_store"), 1)),
+                    0
+            )).decorated(Features.Placements.HEIGHTMAP_SQUARE).chance(100);
+
 
 
     public static final ConfiguredFeature<?, ?> WHEAT_FARMLAND = ModFeatures.WHEAT_FARMLAND.get().configured(
@@ -188,6 +196,8 @@ public class ModConfiguredFeatures {
         Registry.register(registry,IniField.locate("milktea_store"),MILKTEA_STORE);
         Registry.register(registry,IniField.locate("breakfast_store"),BREAKFAST_STORE);
         Registry.register(registry,IniField.locate("round_space"),ROUND_SPACE);
+
+        IniField.LOGGER.debug("configured feature!!!!!!!!!!!!!!!!!!!!!!!!!!");
 
    }
 }
