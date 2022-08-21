@@ -1,9 +1,6 @@
 package com.octenexin.inifield.init;
 
-import com.octenexin.inifield.block.AetherPortal;
-import com.octenexin.inifield.block.CloudBlock;
-import com.octenexin.inifield.block.SnowDropFlower;
-import com.octenexin.inifield.block.WeedGrass;
+import com.octenexin.inifield.block.*;
 import com.octenexin.inifield.item.WeedGrassItem;
 import com.octenexin.inifield.utils.Reference;
 import net.minecraft.block.*;
@@ -43,8 +40,17 @@ public class ModBlocks {
 
 
     public static final RegistryObject<Block> SNOW_DROP_FLOWER=BLOCKS.register("snow_drop_flower",()->new SnowDropFlower(AbstractBlock.Properties.of(Material.REPLACEABLE_PLANT).noCollission().instabreak().sound(SoundType.GRASS).lightLevel((p_235464_0_) -> {
-        return 12;
+        return 9;
     })));
+
+    public static final RegistryObject<Block> LIGHTING_BLOCK = BLOCKS.register("lighting_block", () -> new LightingBlock(Block.Properties.of(Material.AIR).noOcclusion().isValidSpawn(ModBlocks::never).isRedstoneConductor(ModBlocks::never).isSuffocating(ModBlocks::never).isViewBlocking(ModBlocks::never).lightLevel((i)->{
+        return 15;
+    })));
+
+    public static final RegistryObject<Item> LIGHTING_BLOCK_ITEM = ModItems.ITEMS.
+            register(LIGHTING_BLOCK.getId().getPath(), () -> new BlockItem(LIGHTING_BLOCK.get(),ModItems.defaultBuilder()));
+
+
     public static final RegistryObject<Item> SNOW_DROP_FLOWER_ITEM = ModItems.ITEMS.
             register(SNOW_DROP_FLOWER.getId().getPath(), () -> new BlockItem(SNOW_DROP_FLOWER.get(),ModItems.defaultBuilder()));
 

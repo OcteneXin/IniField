@@ -29,5 +29,8 @@ public class ModFeatures {
     public static final RegistryObject<Feature<NbtFeatureConfig>> COUNTRY_MARKET = FEATURES.register("country_market", () -> new FeatureBarn(NbtFeatureConfig.CODEC));
     public static final RegistryObject<Feature<NbtFeatureConfig>> ROUND_SPACE = FEATURES.register("round_space", () -> new FeatureBarn(NbtFeatureConfig.CODEC));
     public static final RegistryObject<Feature<NbtFeatureConfig>> TEST_VILLAGE = FEATURES.register("test_village", () -> new FeatureBarn(NbtFeatureConfig.CODEC));
+    public static final RegistryObject<Feature<NbtFeatureConfig>> FROZEN_FERN = FEATURES.register("frozen_fern", () -> new FeatureFern(NbtFeatureConfig.CODEC));
+    public static final RegistryObject<Feature<NbtFeatureConfig>> NOTCH_SCULPTURE = FEATURES.register("notch_sculpture", () -> new FeatureNotchSculpture(NbtFeatureConfig.CODEC));
+    public static final RegistryObject<Feature<NoFeatureConfig>> SCATTERED_ICE = FEATURES.register("scattered_ice", () -> new FeatureScatteredIce(NoFeatureConfig.CODEC));
 
 }

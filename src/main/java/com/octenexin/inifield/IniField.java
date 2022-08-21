@@ -200,6 +200,7 @@ public class IniField
         ModBlocks.BLOCKS.register(bus);
         ModItems.ITEMS.register(bus);
         //BzFluids.FLUIDS.register(modEventBus);
+        ModSurfaceBuilders.SURFACE_BUILDERS.register(bus);
         ModBiomes.BIOMES.register(bus);
 
         //BzPOI.POI_TYPES.register(modEventBus);
@@ -212,7 +213,7 @@ public class IniField
 
         ModParticles.PARTICLE_TYPES.register(bus);
         //BzEnchantments.ENCHANTMENTS.register(modEventBus);
-        ModSurfaceBuilders.SURFACE_BUILDERS.register(bus);
+
 
         /*I certainly know it's ugly.
           Reflection...

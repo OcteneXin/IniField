@@ -2,6 +2,7 @@ package com.octenexin.inifield.client;
 
 
 import com.octenexin.inifield.init.ModBlocks;
+import com.octenexin.inifield.init.ModItems;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.RenderTypeLookup;
 import net.minecraftforge.api.distmarker.Dist;

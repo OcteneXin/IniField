@@ -15,9 +15,7 @@
     "grass_color": 7841879,
     "foliage_color": 7187779
   },
-  "starts": [
-    "minecraft:village_plains"
-  ],
+  "starts": [],
   "spawners": {},
   "spawn_costs": {},
   "carvers": {},

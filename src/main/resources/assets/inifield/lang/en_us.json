@@ -1,8 +1,12 @@
 {
   "entity.inifield.notch":"Notch",
+  "entity.inifield.cb_block":"Command Block",
   "name.yiga.activated":"Yiga Team Member",
   "item.inifield.light_cloud":"Ancient Gear",
   "item.inifield.tnt_caster":"TNT Caster",
+  "item.inifield.cb_block":"Notch's Command Block",
+  "item.inifield.ender_pickaxe":"Ender Pickaxe",
+  "item.inifield.glasses":"Glasses",
 
   "block.inifield.light_cloud":"Light Cloud",
   "block.inifield.light_raining_cloud":"Light Raining Cloud",
@@ -11,6 +15,7 @@
   "block.inifield.weed_grass":"Weed Grass",
   "block.inifield.snow_drop_flower":"Snow Drop Flower",
   "block.inifield.aether_portal":"Aether Portal",
+  "block.inifield.lighting_block":"Lighting Block",
 
   "biome.inifield.countryside_wheat": "Countryside wheat",
   "biome.inifield.aether_plain": "Aether Plain",

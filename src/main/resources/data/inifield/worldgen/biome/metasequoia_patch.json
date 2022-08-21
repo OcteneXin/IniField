@@ -14,7 +14,7 @@
     "water_color": 7119594,
     "water_fog_color": 855390
   },
-  "surface_builder": "inifield:grass_surface_builder",
+  "surface_builder": "minecraft:grass",
   "carvers": {},
   "features": [
     [],

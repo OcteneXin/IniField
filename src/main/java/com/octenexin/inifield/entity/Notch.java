@@ -15,8 +15,8 @@ public class Notch extends MonsterEntity{
         super(type, worldIn);
         this.goalSelector.addGoal(1, new SwimGoal(this));
         this.goalSelector.addGoal(2, new WaterAvoidingRandomWalkingGoal(this, 1.0D));
-        this.goalSelector.addGoal(3, new LookAtGoal(this,PlayerEntity .class, 50.0F));
-        this.goalSelector.addGoal(4, new LookRandomlyGoal(this));
+        this.goalSelector.addGoal(3, new LookAtGoal(this,CbBlockEntity.class, 50.0F));
+        //this.goalSelector.addGoal(4, new LookRandomlyGoal(this));
         this.targetSelector.addGoal(1, new HurtByTargetGoal(this));
         this.getAttributes().getInstance(Attributes.MAX_HEALTH);
         this.getAttributes().getInstance(Attributes.MOVEMENT_SPEED);
@@ -32,6 +32,5 @@ public class Notch extends MonsterEntity{
             //this.spawnAtLocation(new ItemStack(ItemLoader.ANCIENT_CORE.get(),1));
                 this.spawnAtLocation(new ItemStack(Items.APPLE,1));
             }
-
     }
 }

@@ -7,8 +7,8 @@
   "depth": 0,
   "scale": 0.1,
   "effects": {
-    "sky_color": 12116213,
-    "foliage_color": 12638463,
+    "sky_color": 6068991,
+    "foliage_color": 12779501,
     "grass_color": 7925751,
     "fog_color": 12638463,
     "water_color": 10417651,
@@ -25,21 +25,20 @@
     [],
     [],
     [],
-    [],
+    [
+      "inifield:scattered_ice",
+      "inifield:big_frozen_fern",
+      "inifield:small_frozen_fern",
+      "inifield:tiny_frozen_fern",
+      "inifield:notch_sculpture"
+    ],
     []
   ],
   "starts": [],
   "creature_spawn_probability": 0.13,
   "spawners": {
     "monster": [],
-    "creature": [
-      {
-        "type": "minecraft:bee",
-        "weight": 100,
-        "minCount": 4,
-        "maxCount": 8
-      }
-    ],
+    "creature": [],
     "ambient": [],
     "water_creature": [],
     "water_ambient": [],

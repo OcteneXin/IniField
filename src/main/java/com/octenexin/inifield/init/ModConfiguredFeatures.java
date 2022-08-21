@@ -173,7 +173,41 @@ public class ModConfiguredFeatures {
     ).decorated(Features.Placements.HEIGHTMAP_SQUARE).chance(5);
 
 
+    public static final ConfiguredFeature<?, ?> BIG_FROZEN_FERN = ModFeatures.FROZEN_FERN.get().configured(
+            new NbtFeatureConfig(
+                    new ResourceLocation("empty"),
+                    new ResourceLocation("empty"),
+                    ImmutableList.of(Pair.of(new ResourceLocation(Reference.MOD_ID, "big_frozen_fern"), 1)),
+                    0
+            )).decorated(Features.Placements.HEIGHTMAP_SQUARE);
 
+    public static final ConfiguredFeature<?, ?> SMALL_FROZEN_FERN = ModFeatures.FROZEN_FERN.get().configured(
+            new NbtFeatureConfig(
+                    new ResourceLocation("empty"),
+                    new ResourceLocation("empty"),
+                    ImmutableList.of(Pair.of(new ResourceLocation(Reference.MOD_ID, "small_frozen_fern"), 1)),
+                    0
+            )).decorated(Features.Placements.HEIGHTMAP_SQUARE).count(2);
+
+    public static final ConfiguredFeature<?, ?> TINY_FROZEN_FERN = ModFeatures.FROZEN_FERN.get().configured(
+            new NbtFeatureConfig(
+                    new ResourceLocation("empty"),
+                    new ResourceLocation("empty"),
+                    ImmutableList.of(Pair.of(new ResourceLocation(Reference.MOD_ID, "tiny_frozen_fern"), 1)),
+                    0
+            )).decorated(Features.Placements.HEIGHTMAP_SQUARE).count(5);
+
+    public static final ConfiguredFeature<?, ?> NOTCH_SCULPTURE = ModFeatures.NOTCH_SCULPTURE.get().configured(
+            new NbtFeatureConfig(
+                    new ResourceLocation("empty"),
+                    new ResourceLocation("empty"),
+                    ImmutableList.of(Pair.of(new ResourceLocation(Reference.MOD_ID, "notch_sculpture"), 1)),
+                    0
+            )).decorated(Features.Placements.HEIGHTMAP_SQUARE).chance(10);
+
+    public static final ConfiguredFeature<?, ?> SCATTERED_ICE = ModFeatures.SCATTERED_ICE.get().configured(
+            IFeatureConfig.NONE
+    ).decorated(Features.Placements.HEIGHTMAP_SQUARE);
 
     public static void registerConfiguredFeatures() {
         Registry<ConfiguredFeature<?, ?>> registry = WorldGenRegistries.CONFIGURED_FEATURE;
@@ -196,6 +230,11 @@ public class ModConfiguredFeatures {
         Registry.register(registry,IniField.locate("milktea_store"),MILKTEA_STORE);
         Registry.register(registry,IniField.locate("breakfast_store"),BREAKFAST_STORE);
         Registry.register(registry,IniField.locate("round_space"),ROUND_SPACE);
+        Registry.register(registry,IniField.locate("big_frozen_fern"),BIG_FROZEN_FERN);
+        Registry.register(registry,IniField.locate("small_frozen_fern"),SMALL_FROZEN_FERN);
+        Registry.register(registry,IniField.locate("tiny_frozen_fern"),TINY_FROZEN_FERN);
+        Registry.register(registry,IniField.locate("notch_sculpture"),NOTCH_SCULPTURE);
+        Registry.register(registry,IniField.locate("scattered_ice"),SCATTERED_ICE);
 
         IniField.LOGGER.debug("configured feature!!!!!!!!!!!!!!!!!!!!!!!!!!");
 

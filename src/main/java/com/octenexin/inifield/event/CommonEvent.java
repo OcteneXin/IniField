@@ -6,18 +6,32 @@ import com.octenexin.inifield.IniField;
 import com.octenexin.inifield.client.gui.SimpleDialog;
 import com.octenexin.inifield.client.particles.WeedFurryParticleData;
 import com.octenexin.inifield.init.ModConfiguredStructures;
+import com.octenexin.inifield.init.ModItems;
 import com.octenexin.inifield.init.ModStructures;
 import com.octenexin.inifield.utils.Reference;
 import com.octenexin.inifield.world.dimension.AetherTeleporter;
+import net.minecraft.block.Block;
+import net.minecraft.block.Blocks;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screen.EditBookScreen;
+import net.minecraft.client.world.ClientWorld;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.SpawnReason;
+import net.minecraft.entity.ai.attributes.Attributes;
+import net.minecraft.entity.item.ItemEntity;
+import net.minecraft.entity.monster.ZombifiedPiglinEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
+import net.minecraft.particles.ParticleTypes;
 import net.minecraft.util.Hand;
 import net.minecraft.util.RegistryKey;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.BlockRayTraceResult;
+import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome;
@@ -31,6 +45,10 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.common.BiomeDictionary;
 import net.minecraftforge.event.TickEvent;
+import net.minecraftforge.event.entity.living.LivingEntityUseItemEvent;
+import net.minecraftforge.event.entity.living.LivingEvent;
+import net.minecraftforge.event.entity.living.LivingHurtEvent;
+import net.minecraftforge.event.entity.living.LivingSpawnEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.event.world.BiomeLoadingEvent;
 import net.minecraftforge.event.world.WorldEvent;
@@ -63,6 +81,8 @@ public class CommonEvent {
         IniField.LOGGER.debug("biomeModification!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 
     }
+
+
 
     @SubscribeEvent
     public static void addDimensionalSpacing(WorldEvent.Load event) {
@@ -116,6 +136,68 @@ public class CommonEvent {
 
     }
 
+    @SubscribeEvent
+    public static void onEnderPickaxeHit(LivingHurtEvent event){
+        if(event.getSource().getDirectEntity() instanceof PlayerEntity){
+
+            PlayerEntity playerEntity= (PlayerEntity) event.getSource().getDirectEntity();
+            if(playerEntity.getMainHandItem().getItem()!= ModItems.ENDER_PICKAXE.get()){
+                return;
+            }
+
+            LivingEntity consumer=event.getEntityLiving();
+
+            //event.setAmount((float) consumer.getAttributes().getValue(Attributes.MAX_HEALTH));
+            consumer.kill();
+        }
+    }
+
+//    @SubscribeEvent
+//    public static void onEnderPickaxeMine(PlayerInteractEvent.RightClickBlock event){
+//
+//
+//
+//
+//        PlayerEntity player=event.getPlayer();
+//        if(player.getMainHandItem().getItem()!= ModItems.ENDER_PICKAXE.get()){
+//            return;
+//        }
+//
+//        World world=player.level;
+//        BlockPos pos=event.getPos();
+//        Block block=world.getBlockState(pos).getBlock();
+//        world.setBlock(pos, Blocks.AIR.defaultBlockState(),3);
+//        player.spawnAtLocation(new ItemStack(block.asItem()));
+//
+//    }
+
+    @SubscribeEvent
+    public static void onEnderPickaxeFinish(LivingEntityUseItemEvent.Finish event){
+        LivingEntity entity=event.getEntityLiving();
+
+        if(entity instanceof PlayerEntity){
+
+            if(entity.getMainHandItem().getItem()!= ModItems.ENDER_PICKAXE.get()){
+                return;
+            }
+
+
+            World world=entity.level;
+            BlockPos pos=entity.blockPosition();
+
+            double d0 = 16;
+            AxisAlignedBB axisalignedbb = AxisAlignedBB.unitCubeFromLowerCorner(entity.position()).inflate(d0, 10.0D, d0);
+
+            world.getLoadedEntitiesOfClass(LivingEntity.class, axisalignedbb).stream()
+                    .filter((p_241408_1_) -> p_241408_1_ != entity)
+                    .forEach(LivingEntity::kill);
+
+
+            world.addParticle(ParticleTypes.CRIT,pos.getX(),pos.getY()+2.0D,pos.getZ(),0.0D,0.0D,0.0D);
+
+        }
+    }
+
 
     @SubscribeEvent
     @OnlyIn(Dist.CLIENT)
@@ -140,26 +222,6 @@ public class CommonEvent {
         }
     }
 
-
-    @SubscribeEvent
-    public static void rightClickDiamond(PlayerInteractEvent.RightClickBlock event){
-
-        PlayerEntity entity=event.getPlayer();
-        World world=event.getWorld();
-        IniField.LOGGER.info("clicks1");
-
-        if(event.getHand()!= Hand.MAIN_HAND||event.getItemStack().getItem()!= Items.DIAMOND){
-            return;
-        }
-        IniField.LOGGER.info("clicks2");
-        if(world instanceof ServerWorld){
-            IniField.LOGGER.info("clicks3");
-            //RegistryKey<World> registrykey = world.dimension() == World.END ? World.OVERWORLD : World.END;
-            //attemptSendPlayer(entity,true);
-            Minecraft minecraft=Minecraft.getInstance();
-
-        }
-    }
 
 
 }
