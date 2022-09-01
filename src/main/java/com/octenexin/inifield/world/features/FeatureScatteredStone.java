@@ -33,8 +33,8 @@ public class FeatureScatteredStone extends Feature<NoFeatureConfig> {
         }
 
 
-        for(int j = p_241855_4_.getX()-5; j <= p_241855_4_.getX() + 5; ++j) {
-            for(int k = p_241855_4_.getZ()-5; k <= p_241855_4_.getZ() + 5; ++k) {
+        for(int j = p_241855_4_.getX()-6; j <= p_241855_4_.getX() + 6; ++j) {
+            for(int k = p_241855_4_.getZ()-6; k <= p_241855_4_.getZ() + 6; ++k) {
 
                 if((j-p_241855_4_.getX())*(j-p_241855_4_.getX())+(k-p_241855_4_.getZ())*(k-p_241855_4_.getZ())<=25){
                     BlockPos blockpos = new BlockPos(j, findRightPos(p_241855_1_,j,k), k);

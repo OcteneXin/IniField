@@ -7,7 +7,10 @@ import com.octenexin.inifield.client.gui.SimpleDialog;
 import com.octenexin.inifield.client.particles.WeedFurryParticleData;
 import com.octenexin.inifield.init.ModConfiguredStructures;
 import com.octenexin.inifield.init.ModItems;
+import com.octenexin.inifield.init.ModSounds;
 import com.octenexin.inifield.init.ModStructures;
+import com.octenexin.inifield.network.ModNetworking;
+import com.octenexin.inifield.network.SendPack;
 import com.octenexin.inifield.utils.Reference;
 import com.octenexin.inifield.world.dimension.AetherTeleporter;
 import net.minecraft.block.Block;
@@ -22,12 +25,14 @@ import net.minecraft.entity.ai.attributes.Attributes;
 import net.minecraft.entity.item.ItemEntity;
 import net.minecraft.entity.monster.ZombifiedPiglinEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.particles.ParticleTypes;
 import net.minecraft.util.Hand;
 import net.minecraft.util.RegistryKey;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.BlockRayTraceResult;
@@ -55,6 +60,7 @@ import net.minecraftforge.event.world.WorldEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.ObfuscationReflectionHelper;
+import net.minecraftforge.fml.network.PacketDistributor;
 
 import java.lang.reflect.Method;
 import java.util.HashMap;
@@ -73,11 +79,11 @@ public class CommonEvent {
     public static void biomeModification(BiomeLoadingEvent event) {
         RegistryKey<Biome> key = RegistryKey.create(Registry.BIOME_REGISTRY, event.getName());
         Set<BiomeDictionary.Type> types = BiomeDictionary.getTypes(key);
-        if (types.contains(net.minecraftforge.common.BiomeDictionary.Type.OVERWORLD) && (types.contains(net.minecraftforge.common.BiomeDictionary.Type.MOUNTAIN) || types.contains(net.minecraftforge.common.BiomeDictionary.Type.COLD))) {
-            event.getGeneration().getStructures().add(() -> {
-                return ModConfiguredStructures.CONFIGURED_HIGHWAY;
-            });
-        }
+//        if (types.contains(net.minecraftforge.common.BiomeDictionary.Type.OVERWORLD) && (types.contains(net.minecraftforge.common.BiomeDictionary.Type.MOUNTAIN) || types.contains(net.minecraftforge.common.BiomeDictionary.Type.COLD))) {
+//            event.getGeneration().getStructures().add(() -> {
+//                return ModConfiguredStructures.CONFIGURED_HIGHWAY;
+//            });
+//        }
         IniField.LOGGER.debug("biomeModification!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 
     }
@@ -130,6 +136,22 @@ public class CommonEvent {
             if(playerEntity.position().y<=0){
                 IniField.LOGGER.debug(playerEntity.level.isClientSide());
                 IniField.LOGGER.debug(playerEntity.level.dimension().location());
+                attemptSendPlayer(playerEntity,true);
+            }
+        }
+
+    }
+
+    @SubscribeEvent
+    public static void onFlyUpOverworld(TickEvent.PlayerTickEvent event){
+        PlayerEntity playerEntity=event.player;
+        World world=playerEntity.getCommandSenderWorld();
+        RegistryKey<World> aether = RegistryKey.create(Registry.DIMENSION_REGISTRY, new ResourceLocation(Reference.MOD_ID,"aether"));
+
+
+
+        if((world instanceof ServerWorld)&&playerEntity.level.dimension().equals(World.OVERWORLD)){
+            if(playerEntity.position().y>=400){
                 attemptSendPlayer(playerEntity,true);
             }
         }
@@ -195,26 +217,39 @@ public class CommonEvent {
 
             world.addParticle(ParticleTypes.CRIT,pos.getX(),pos.getY()+2.0D,pos.getZ(),0.0D,0.0D,0.0D);
 
+            if(world.isClientSide()){
+                world.playSound((PlayerEntity) entity,entity.blockPosition(), ModSounds.MEA_SOUND.get(), SoundCategory.NEUTRAL,10f,1f);
+            }
         }
     }
 
 
     @SubscribeEvent
-    @OnlyIn(Dist.CLIENT)
     public static void rightClickStick(PlayerInteractEvent.RightClickBlock event){
 
         PlayerEntity entity=event.getPlayer();
         World world=event.getWorld();
-        IniField.LOGGER.info("clicks stick");
 
         if(event.getHand()!= Hand.MAIN_HAND||event.getItemStack().getItem()!= Items.STICK){
             return;
         }
 
+        if (world.isClientSide) {
+            ModNetworking.INSTANCE.sendToServer(new SendPack("From the Client"));
+        }
+        if (!world.isClientSide) {
+            ModNetworking.INSTANCE.send(
+                    PacketDistributor.PLAYER.with(
+                            () -> {
+                                return (ServerPlayerEntity) entity;
+                            }
+                    ),
+                    new SendPack("From Server"));
+        }
+
         if(world instanceof ServerWorld){
             IniField.LOGGER.info("clicks stick 3");
             BlockPos pos=event.getPos();
-
             world.addParticle(new WeedFurryParticleData(255,255,255),pos.getX(),pos.getY()+1,pos.getZ(),0D,0.1D,0D);
 
             IniField.LOGGER.info("clicks stick success!");

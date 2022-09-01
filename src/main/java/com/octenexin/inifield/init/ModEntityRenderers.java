@@ -1,6 +1,7 @@
 package com.octenexin.inifield.init;
 
 import com.octenexin.inifield.entity.renderer.CbBlockRenderer;
+import com.octenexin.inifield.entity.renderer.EnderRenderer;
 import com.octenexin.inifield.entity.renderer.NotchRenderer;
 import com.octenexin.inifield.entity.renderer.ThrowableTNTRenderer;
 import net.minecraft.client.Minecraft;
@@ -23,6 +24,10 @@ public class ModEntityRenderers {
 
         RenderingRegistry.registerEntityRenderingHandler(ModEntities.CB_BLOCK_ENTITY.get(), (EntityRendererManager manager) -> {
             return new CbBlockRenderer(manager);
+        });
+
+        RenderingRegistry.registerEntityRenderingHandler(ModEntities.ENDER.get(), (EntityRendererManager manager) -> {
+            return new EnderRenderer(manager);
         });
     }
 }

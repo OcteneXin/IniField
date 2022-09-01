@@ -33,18 +33,24 @@ public class WheatFarmlandFeature extends Feature<NoFeatureConfig> {
 
                 if(p_241855_1_.getBlockState(blockpos).is(Blocks.FARMLAND)){
                     if(checkClosing(p_241855_1_,blockpos)){
-                        p_241855_1_.setBlock(blockpos.above(), WHEAT, 2);
+                        if(p_241855_3_.nextInt(300)==0){
+                            p_241855_1_.setBlock(blockpos.above(), Blocks.COMPOSTER.defaultBlockState(), 2);
+                        }else{
+                            p_241855_1_.setBlock(blockpos.above(), WHEAT, 2);
+                        }
                     }else {
                         p_241855_1_.setBlock(blockpos,WOODEN_SLAB,2);
                         if(checkClosing(p_241855_1_,blockpos.below())){
                             p_241855_1_.setBlock(blockpos.below(),WATER,2);
                         }
 
-                        if(p_241855_3_.nextInt(40)==0){
-                            if(p_241855_3_.nextInt(30)==0){
-                                p_241855_1_.setBlock(blockpos,Blocks.DIRT.defaultBlockState(),2);
-                                Features.OAK.place(p_241855_1_,p_241855_2_,p_241855_3_,blockpos.above());
-                            }
+                        if(p_241855_3_.nextInt(200)==0){
+                            p_241855_1_.setBlock(blockpos,Blocks.DIRT.defaultBlockState(),2);
+                            Features.OAK.place(p_241855_1_,p_241855_2_,p_241855_3_,blockpos.above());
+                        }
+
+                        if(p_241855_3_.nextInt(100)==0){
+                            p_241855_1_.setBlock(blockpos,Blocks.JACK_O_LANTERN.defaultBlockState(),2);
                         }
                     }
 

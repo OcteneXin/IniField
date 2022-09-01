@@ -37,15 +37,11 @@ public class AetherTeleporter implements ITeleporter {
     * */
     @Nullable
     public PortalInfo getPortalInfo(Entity entity, ServerWorld destWorld, Function<ServerWorld, PortalInfo> defaultPortalInfo) {
-        if(dest==World.OVERWORLD){
-            if(entity instanceof LivingEntity){
-                ((LivingEntity)entity).addEffect(new EffectInstance(Effects.SLOW_FALLING, 600, 0));
-            }
-            return new PortalInfo(new Vector3d(entity.position().x,255,entity.position().z), Vector3d.ZERO, entity.yRot, entity.xRot);
-
-        }else{
-            return new PortalInfo(new Vector3d(entity.position().x,255,entity.position().z), Vector3d.ZERO, entity.yRot, entity.xRot);
+        if(entity instanceof LivingEntity){
+            ((LivingEntity)entity).addEffect(new EffectInstance(Effects.SLOW_FALLING, 600, 0));
         }
+
+        return new PortalInfo(new Vector3d(entity.position().x,255,entity.position().z), Vector3d.ZERO, entity.yRot, entity.xRot);
     }
 
 

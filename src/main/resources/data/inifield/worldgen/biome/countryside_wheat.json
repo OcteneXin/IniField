@@ -16,12 +16,46 @@
     "foliage_color": 7187779
   },
   "starts": [],
-  "spawners": {},
+  "creature_spawn_probability": 0.12,
+  "spawners": {
+    "monster": [],
+    "creature": [
+      {
+        "type": "minecraft:sheep",
+        "weight": 12,
+        "minCount": 4,
+        "maxCount": 4
+      },
+      {
+        "type": "minecraft:chicken",
+        "weight": 10,
+        "minCount": 4,
+        "maxCount": 4
+      },
+      {
+        "type": "minecraft:cow",
+        "weight": 8,
+        "minCount": 4,
+        "maxCount": 4
+      }
+    ],
+    "ambient": [],
+    "water_creature": [],
+    "water_ambient": [
+      {
+        "type": "minecraft:cod",
+        "weight": 10,
+        "minCount": 3,
+        "maxCount": 6
+      }
+    ],
+    "misc": []
+  },
   "spawn_costs": {},
   "carvers": {},
   "features": [
     [],
-    [],
+    ["minecraft:lake_water"],
     [],
     [],
     [],
@@ -31,16 +65,18 @@
     [
       "inifield:wheat_farmland",
       "inifield:scattered_stone",
-      "inifield:small_barn",
-      "inifield:broken_barn",
+      "inifield:wheat_houses",
+      "inifield:villagers",
       "inifield:redstone_light",
-      "inifield:wheat_mill",
+      "inifield:floor_lantern",
       "inifield:sprinkler_irrigation",
-      "inifield:round_space",
-      "inifield:milktea_store",
-      "inifield:breakfast_store",
-      "inifield:country_market"
-      ],
+      "inifield:scarecrow",
+      "minecraft:plain_vegetation",
+      "minecraft:patch_grass_normal",
+      "minecraft:flower_default",
+      "minecraft:patch_pumpkin",
+      "minecraft:patch_tall_grass"
+    ],
     []
   ]
 }

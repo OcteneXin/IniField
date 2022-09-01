@@ -1,7 +1,11 @@
 package com.octenexin.inifield.client;
 
+import com.octenexin.inifield.IniField;
 import com.octenexin.inifield.client.gui.SimpleDialog;
+import com.octenexin.inifield.client.gui.UNOGui;
 import com.octenexin.inifield.entity.Notch;
+import com.octenexin.inifield.init.ModBiomes;
+import com.octenexin.inifield.story.VillagerStory;
 import com.octenexin.inifield.utils.DecisionNode;
 import com.octenexin.inifield.utils.ModGeneralUtils;
 import net.minecraft.block.Block;
@@ -12,6 +16,7 @@ import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.settings.KeyBinding;
 import net.minecraft.client.util.InputMappings;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.merchant.villager.VillagerEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.projectile.ProjectileHelper;
 import net.minecraft.util.math.BlockRayTraceResult;
@@ -26,6 +31,8 @@ import net.minecraftforge.client.settings.KeyModifier;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import org.lwjgl.glfw.GLFW;
+
+import java.util.Objects;
 
 @Mod.EventBusSubscriber(Dist.CLIENT)
 public class ModKeyBoardEvent {
@@ -65,6 +72,17 @@ public class ModKeyBoardEvent {
 
 
                     Minecraft.getInstance().setScreen(new SimpleDialog("nc_dialog.png",25,node1));
+                }else if(entity instanceof VillagerEntity){
+
+                    if(Objects.requireNonNull(world.getBiome(player.blockPosition()).getRegistryName()).toString().equals("inifield:countryside_wheat")){
+                        IniField.LOGGER.debug(world.getDayTime());
+                        if(((VillagerEntity)entity).isBaby()){
+                            VillagerStory.dialog_2(player);
+                        }else{
+                            VillagerStory.dialog_1(player);
+                        }
+
+                    }
                 }
 
             }
@@ -73,7 +91,8 @@ public class ModKeyBoardEvent {
 
                 DecisionNode node1=new DecisionNode(true,"inifield.look.overworld.grass");
                 if(block== Blocks.GRASS_BLOCK){
-                    Minecraft.getInstance().setScreen(new SimpleDialog("small_dialog.png",30,node1));
+                    //Minecraft.getInstance().setScreen(new SimpleDialog("small_dialog.png",30,node1));
+                    Minecraft.getInstance().setScreen(new UNOGui());
                 }
             }
 

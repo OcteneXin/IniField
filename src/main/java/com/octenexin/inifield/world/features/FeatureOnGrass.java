@@ -9,9 +9,9 @@ import net.minecraft.world.gen.ChunkGenerator;
 
 import java.util.Random;
 
-public class FeatureBarn extends NbtFeature{
+public class FeatureOnGrass extends NbtFeature{
 
-    public FeatureBarn(Codec<NbtFeatureConfig> configFactory) {
+    public FeatureOnGrass(Codec<NbtFeatureConfig> configFactory) {
         super(configFactory);
     }
 

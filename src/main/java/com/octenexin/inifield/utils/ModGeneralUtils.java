@@ -18,11 +18,9 @@ import net.minecraft.world.biome.Biome;
 import net.minecraft.world.gen.GenerationStage;
 import net.minecraft.world.gen.feature.ConfiguredFeature;
 import net.minecraft.world.server.ServerWorld;
+import org.apache.logging.log4j.util.PropertySource;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
-import java.util.Random;
+import java.util.*;
 import java.util.function.Supplier;
 
 public class ModGeneralUtils {
@@ -134,4 +132,36 @@ public class ModGeneralUtils {
         IniField.LOGGER.info("endSend");
 
     }
+
+    public static <T> void swap(ArrayList<T> a, int i, int j){
+        T temp = a.get(i);
+        a.set(i,a.get(j));
+        a.set(j,temp);
+    }
+
+    public static <T> void shuffle(ArrayList<T> arr) {
+        Random rand=new Random();
+        int length = arr.size();
+        for ( int i = length; i > 0; i-- ){
+            int randInd = rand.nextInt(i);
+            swap(arr, randInd, i - 1);
+        }
+    }
+
+    public static DecisionNode genLinkedList(String[] arr){
+        DecisionNode root=new DecisionNode(true,arr[0]);
+        DecisionNode ptr=root;
+
+        int len=arr.length;
+        for (int i = 1; i < len; i++) {
+            DecisionNode temp=new DecisionNode(true,arr[i]);
+            ptr.setRight(temp);
+            ptr=temp;
+        }
+
+        return root;
+    }
+
+
 }
+
