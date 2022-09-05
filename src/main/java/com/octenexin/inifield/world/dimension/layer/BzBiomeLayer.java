@@ -1,10 +1,8 @@
 package com.octenexin.inifield.world.dimension.layer;
 
 
-import com.octenexin.inifield.world.dimension.BzBiomeProvider;
+import com.octenexin.inifield.world.dimension.AetherBiomeProvider;
 import net.minecraft.util.SharedSeedRandom;
-import net.minecraft.util.registry.Registry;
-import net.minecraft.world.biome.Biome;
 import net.minecraft.world.gen.INoiseRandom;
 import net.minecraft.world.gen.PerlinNoiseGenerator;
 import net.minecraft.world.gen.layer.traits.IAreaTransformer0;
@@ -29,12 +27,12 @@ public enum BzBiomeLayer implements IAreaTransformer0 {
 //		Bumblezone.LOGGER.log(Level.INFO, "Max: " + max +", Min: "+min + ", perlin: "+perlinNoise);
 
         if (Math.abs(perlinNoise) % 0.1D < 0.06D) {
-            return BzBiomeProvider.LAYERS_BIOME_REGISTRY.getId(
-                    BzBiomeProvider.LAYERS_BIOME_REGISTRY.get(BzBiomeProvider.AETHER_PLAIN));
+            return AetherBiomeProvider.LAYERS_BIOME_REGISTRY.getId(
+                    AetherBiomeProvider.LAYERS_BIOME_REGISTRY.get(AetherBiomeProvider.AETHER_PLAIN));
         }
         else{
-            return BzBiomeProvider.LAYERS_BIOME_REGISTRY.getId(
-                    BzBiomeProvider.LAYERS_BIOME_REGISTRY.get(BzBiomeProvider.FURRY_CLOUD_PLAIN));
+            return AetherBiomeProvider.LAYERS_BIOME_REGISTRY.getId(
+                    AetherBiomeProvider.LAYERS_BIOME_REGISTRY.get(AetherBiomeProvider.FURRY_CLOUD_PLAIN));
         }
     }
 

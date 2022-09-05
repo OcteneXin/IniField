@@ -1,0 +1,5 @@
+{
+  "variants": {
+    "": { "model": "inifield:block/full_reflection_block" }
+  }
+}

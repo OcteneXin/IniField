@@ -19,5 +19,7 @@ public class RenderTypeRegistry {
         RenderTypeLookup.setRenderLayer(ModBlocks.WEED_GRASS.get(), RenderType.cutout());
         RenderTypeLookup.setRenderLayer(ModBlocks.SNOW_DROP_FLOWER.get(), RenderType.cutout());
         RenderTypeLookup.setRenderLayer(ModBlocks.AETHER_PORTAL.get(), RenderType.translucent());
+        RenderTypeLookup.setRenderLayer(ModBlocks.WATER_CANDLE.get(), RenderType.cutout());
+        RenderTypeLookup.setRenderLayer(ModBlocks.FULL_REFLECTION_BLOCK.get(), RenderType.translucent());
     }
 }

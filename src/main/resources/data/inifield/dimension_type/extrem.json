@@ -10,6 +10,7 @@
   "coordinate_scale": 1,
   "ambient_light": 0,
   "logical_height": 256,
-  "effects": "inifield:aether_sky",
+  "fixed_time": 23650,
+  "effects": "inifield:extrem_sky",
   "infiniburn": "minecraft:infiniburn_overworld"
 }

@@ -1,0 +1,50 @@
+{
+  "surface_builder": "minecraft:grass",
+  "depth": -0.08,
+  "scale": 0.05,
+  "temperature": 0.4,
+  "downfall": 0.8,
+  "precipitation": "rain",
+  "category": "plains",
+  "effects": {
+    "sky_color": 8760754,
+    "fog_color": 13232616,
+    "water_color": 4841436,
+    "water_fog_color": 995917,
+    "grass_color": 4890992,
+    "foliage_color": 5014892
+  },
+  "starts": [],
+  "spawners": {},
+  "spawn_costs": {},
+  "carvers": {},
+  "features": [
+    [],
+    ["minecraft:lake_water"],
+    [],
+    [],
+    [],
+    [],
+    [
+      "minecraft:disk_clay",
+      "minecraft:disk_gravel",
+      "minecraft:disk_sand"
+    ],
+    [],
+    [ "minecraft:patch_taiga_grass",
+      "minecraft:plain_vegetation",
+      "minecraft:flower_plain_decorated",
+      "minecraft:patch_grass_plain",
+      "minecraft:spring_water",
+      "minecraft:spring_lava",
+      "minecraft:patch_large_fern",
+      "minecraft:patch_sugar_cane_desert",
+      "inifield:fancy_spruce_tree",
+      "inifield:floating_boat",
+      "inifield:dock",
+      "inifield:exterm_beacon",
+      "inifield:water_candle"
+    ],
+    []
+  ]
+}

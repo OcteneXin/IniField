@@ -1,0 +1,18 @@
+{
+  "type": "inifield:extrem_frontier",
+  "generator": {
+    "type": "minecraft:flat",
+    "settings": {
+      "biome": "inifield:extrem_frontier_plate",
+      "layers": [
+        {
+          "block": "minecraft:barrier",
+          "height": 1
+        }
+      ],
+      "structures": {
+        "structures": {}
+      }
+    }
+  }
+}

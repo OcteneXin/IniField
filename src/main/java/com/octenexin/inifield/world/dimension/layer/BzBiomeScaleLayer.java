@@ -1,7 +1,7 @@
 package com.octenexin.inifield.world.dimension.layer;
 
 
-import com.octenexin.inifield.world.dimension.BzBiomeProvider;
+import com.octenexin.inifield.world.dimension.AetherBiomeProvider;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.gen.INoiseRandom;
 import net.minecraft.world.gen.layer.traits.ICastleTransformer;
@@ -16,8 +16,8 @@ public class BzBiomeScaleLayer implements ICastleTransformer {
     }
 
     public int apply(INoiseRandom context, int n, int e, int s, int w, int center) {
-        int hivePillarId = BzBiomeProvider.LAYERS_BIOME_REGISTRY.getId(
-                BzBiomeProvider.LAYERS_BIOME_REGISTRY.get(this.biomeToExpand));
+        int hivePillarId = AetherBiomeProvider.LAYERS_BIOME_REGISTRY.getId(
+                AetherBiomeProvider.LAYERS_BIOME_REGISTRY.get(this.biomeToExpand));
 
         if(center != hivePillarId){
             boolean borderingHivePillar = false;

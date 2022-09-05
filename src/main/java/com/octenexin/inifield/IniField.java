@@ -1,41 +1,16 @@
 package com.octenexin.inifield;
 
-import com.mojang.serialization.Codec;
-import com.octenexin.inifield.client.ClientEvent;
 import com.octenexin.inifield.init.*;
 import com.octenexin.inifield.utils.Reference;
 
-import com.octenexin.inifield.world.dimension.BzDimension;
-import net.minecraft.util.RegistryKey;
+import com.octenexin.inifield.world.dimension.ModDimension;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.registry.Registry;
-import net.minecraft.world.World;
-import net.minecraft.world.biome.Biome;
-import net.minecraft.world.biome.Biomes;
-import net.minecraft.world.gen.ChunkGenerator;
-import net.minecraft.world.gen.FlatChunkGenerator;
-import net.minecraft.world.gen.feature.structure.Structure;
-import net.minecraft.world.gen.settings.DimensionStructuresSettings;
-import net.minecraft.world.gen.settings.StructureSeparationSettings;
-import net.minecraft.world.server.ServerWorld;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.common.BiomeDictionary;
-import net.minecraftforge.event.world.BiomeLoadingEvent;
-import net.minecraftforge.event.world.WorldEvent;
-import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.IEventBus;
-import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.common.ObfuscationReflectionHelper;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-
-import java.lang.reflect.Method;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Set;
 
 // The value here should match an entry in the META-INF/mods.toml file
 @Mod("inifield")
@@ -248,7 +223,7 @@ public class IniField
         event.enqueueWork(() -> {
 
             ModProcessors.registerProcessors();
-            BzDimension.setupDimension();
+            ModDimension.setupDimension();
             //ModTemplatePools.bootstrap();
             ModConfiguredFeatures.registerConfiguredFeatures();
             ModStructures.setupStructures();

@@ -1,40 +1,12 @@
 package com.octenexin.inifield.client;
 
-import com.octenexin.inifield.client.particles.WeedFurryParticle;
-import com.octenexin.inifield.init.ModParticles;
-import com.octenexin.inifield.mixin.SkyPropertiesAccessor;
 import com.octenexin.inifield.utils.Reference;
-import com.octenexin.inifield.world.dimension.BzSkyProperty;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.RenderType;
-import net.minecraft.client.renderer.RenderTypeLookup;
-import net.minecraft.client.renderer.entity.SpriteRenderer;
-import net.minecraft.client.renderer.model.ModelResourceLocation;
-import net.minecraft.client.renderer.texture.AtlasTexture;
-import net.minecraft.client.world.DimensionRenderInfo;
-import net.minecraft.entity.EntityType;
-import net.minecraft.entity.passive.BeeEntity;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemModelsProperties;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.text.StringTextComponent;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
-import net.minecraftforge.client.IWeatherRenderHandler;
-import net.minecraftforge.client.event.*;
-import net.minecraftforge.client.model.ModelLoader;
-import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.TickEvent;
-import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.RegistryObject;
-import net.minecraftforge.fml.client.registry.IRenderFactory;
-import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
-import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
-
-import java.util.Objects;
 
 @OnlyIn(Dist.CLIENT)
 @Mod.EventBusSubscriber(modid = Reference.MOD_ID, value = Dist.CLIENT)

@@ -146,8 +146,6 @@ public class CommonEvent {
     public static void onFlyUpOverworld(TickEvent.PlayerTickEvent event){
         PlayerEntity playerEntity=event.player;
         World world=playerEntity.getCommandSenderWorld();
-        RegistryKey<World> aether = RegistryKey.create(Registry.DIMENSION_REGISTRY, new ResourceLocation(Reference.MOD_ID,"aether"));
-
 
 
         if((world instanceof ServerWorld)&&playerEntity.level.dimension().equals(World.OVERWORLD)){

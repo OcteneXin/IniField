@@ -5,7 +5,6 @@ import com.octenexin.inifield.world.features.*;
 import com.octenexin.inifield.world.features.configs.NbtFeatureConfig;
 import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.gen.feature.NoFeatureConfig;
-import net.minecraft.world.gen.feature.ProbabilityConfig;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -13,7 +12,10 @@ import net.minecraftforge.registries.ForgeRegistries;
 public class ModFeatures {
     public static final DeferredRegister<Feature<?>> FEATURES = DeferredRegister.create(ForgeRegistries.FEATURES, Reference.MOD_ID);
 
-    public static final RegistryObject<Feature<ProbabilityConfig>> SCATTERED_WEED_GRASS = FEATURES.register("scattered_weed_grass", () -> new ScatteredWeedGrassFeature(ProbabilityConfig.CODEC));
+    public static final RegistryObject<Feature<NoFeatureConfig>> WATER_CANDLE = FEATURES.register("water_candle", () -> new WaterCandleFeature(NoFeatureConfig.CODEC));
+    public static final RegistryObject<Feature<NbtFeatureConfig>> FLOATING_BOAT = FEATURES.register("floating_boat", () -> new FloatingBoatFeature(NbtFeatureConfig.CODEC));
+    public static final RegistryObject<Feature<NoFeatureConfig>> DOCK = FEATURES.register("dock", () -> new DockFeature(NoFeatureConfig.CODEC));
+    public static final RegistryObject<Feature<NoFeatureConfig>> EXTERM_BEACON = FEATURES.register("exterm_beacon", () -> new ExtermBeaconFeature(NoFeatureConfig.CODEC));
     public static final RegistryObject<Feature<NoFeatureConfig>> WHEAT_FARMLAND = FEATURES.register("wheat_farmland", () -> new WheatFarmlandFeature(NoFeatureConfig.CODEC));
     public static final RegistryObject<Feature<NbtFeatureConfig>> FEATURE_ON_GRASS = FEATURES.register("feature_on_grass", () -> new FeatureOnGrass(NbtFeatureConfig.CODEC));
     public static final RegistryObject<Feature<NbtFeatureConfig>> FEATURE_ON_DIRT = FEATURES.register("feature_on_dirt", () -> new FeatureOnGrass(NbtFeatureConfig.CODEC));

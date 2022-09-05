@@ -21,7 +21,7 @@ public class WeedFurryParticle extends SpriteTexturedParticle {
         this.yd += ySpeed;
         this.zd += zSpeed;
         this.setSize(0.1F, 0.1F);
-        this.gravity = -0.0005F * (this.random.nextFloat() * 0.5f + 0.5f);
+        this.gravity = -0.001F * (this.random.nextFloat() * 0.5f + 0.5f);
         this.quadSize *= (this.random.nextFloat() * 0.5f + 0.63f);
         this.lifetime = 300 + this.random.nextInt(300);
         this.hasPhysics = true;
@@ -44,11 +44,18 @@ public class WeedFurryParticle extends SpriteTexturedParticle {
             this.move(this.xd, this.yd, this.zd);
             this.xd *= 0.98F;
             this.yd *= 0.98F;
+            this.zd *= 0.98F;
             if(random.nextInt(10)==0){
-                this.yd+=0.001F;
+                this.yd+=0.01F;
+            }
+            if(random.nextInt(10)==0){
+                this.xd+=random.nextFloat()*0.1F-0.05F;
+            }
+            if(random.nextInt(10)==0){
+                this.zd+=random.nextFloat()*0.1F-0.05F;
             }
 
-            this.zd *= 0.98F;
+
 
             if (this.onGround&&this.yd<0) {
                 this.yd*=-0.8F;

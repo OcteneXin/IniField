@@ -21,7 +21,7 @@ import net.minecraftforge.client.ISkyRenderHandler;
 
 import java.util.Random;
 
-public class ModSkyRenderer implements ISkyRenderHandler {
+public class AetherSkyRenderer implements ISkyRenderHandler {
 
     private static final ResourceLocation MOON_LOCATION = new ResourceLocation("textures/environment/moon_phases.png");
     private static final ResourceLocation SUN_LOCATION = new ResourceLocation("textures/environment/sun.png");
@@ -35,7 +35,7 @@ public class ModSkyRenderer implements ISkyRenderHandler {
     private VertexBuffer starVBO;
     private final TextureManager textureManager=Minecraft.getInstance().getTextureManager();
 
-    public ModSkyRenderer(){
+    public AetherSkyRenderer(){
         generateStars();
     }
 

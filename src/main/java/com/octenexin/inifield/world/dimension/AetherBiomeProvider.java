@@ -2,21 +2,15 @@ package com.octenexin.inifield.world.dimension;
 
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import com.octenexin.inifield.IniField;
-import com.octenexin.inifield.mixin.ModLayerAccessor;
 import com.octenexin.inifield.utils.Reference;
 import com.octenexin.inifield.world.dimension.layer.BzBiomeLayer;
 import com.octenexin.inifield.world.dimension.layer.BzBiomeMergeLayer;
 import com.octenexin.inifield.world.dimension.layer.BzBiomeNonstandardLayer;
 import com.octenexin.inifield.world.dimension.layer.BzBiomeScaleLayer;
-import net.minecraft.util.RegistryKey;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.SharedConstants;
-import net.minecraft.util.Util;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.util.registry.RegistryLookupCodec;
 import net.minecraft.world.biome.Biome;
-import net.minecraft.world.biome.BiomeRegistry;
 import net.minecraft.world.biome.provider.BiomeProvider;
 import net.minecraft.world.gen.IExtendedNoiseRandom;
 import net.minecraft.world.gen.LazyAreaLayerContext;
@@ -32,15 +26,15 @@ import java.util.Map;
 import java.util.function.LongFunction;
 import java.util.stream.Collectors;
 
-public class BzBiomeProvider extends BiomeProvider {
+public class AetherBiomeProvider extends BiomeProvider {
     public static void registerBiomeProvider() {
-        Registry.register(Registry.BIOME_SOURCE, new ResourceLocation(Reference.MOD_ID, "biome_source"), BzBiomeProvider.CODEC);
+        Registry.register(Registry.BIOME_SOURCE, new ResourceLocation(Reference.MOD_ID, "biome_source"), AetherBiomeProvider.CODEC);
     }
 
-    public static final Codec<BzBiomeProvider> CODEC =
+    public static final Codec<AetherBiomeProvider> CODEC =
             RecordCodecBuilder.create((instance) -> instance.group(
                     RegistryLookupCodec.create(Registry.BIOME_REGISTRY).forGetter((vanillaLayeredBiomeSource) -> vanillaLayeredBiomeSource.BIOME_REGISTRY))
-            .apply(instance, instance.stable(BzBiomeProvider::new)));
+            .apply(instance, instance.stable(AetherBiomeProvider::new)));
 
 
 
@@ -57,10 +51,10 @@ public class BzBiomeProvider extends BiomeProvider {
     public static Registry<Biome> LAYERS_BIOME_REGISTRY;
     public static List<Biome> NONSTANDARD_BIOME = new ArrayList<>();
 
-    public BzBiomeProvider(Registry<Biome> biomeRegistry) {
+    public AetherBiomeProvider(Registry<Biome> biomeRegistry) {
         this(0, biomeRegistry);
     }
-    public BzBiomeProvider(long seed, Registry<Biome> biomeRegistry) {
+    public AetherBiomeProvider(long seed, Registry<Biome> biomeRegistry) {
         super(biomeRegistry.entrySet().stream()
                 .filter(entry -> entry.getKey().location().getNamespace().equals(Reference.MOD_ID))
                 .map(Map.Entry::getValue)
@@ -75,7 +69,7 @@ public class BzBiomeProvider extends BiomeProvider {
 
         BzBiomeLayer.setSeed(seed);
         this.BIOME_REGISTRY = biomeRegistry;
-        BzBiomeProvider.LAYERS_BIOME_REGISTRY = biomeRegistry;
+        AetherBiomeProvider.LAYERS_BIOME_REGISTRY = biomeRegistry;
         this.BIOME_SAMPLER = buildWorldProcedure(seed);
     }
 
@@ -168,6 +162,6 @@ public class BzBiomeProvider extends BiomeProvider {
     @Override
     // CLIENT-SIDED
     public BiomeProvider withSeed(long seed) {
-        return new BzBiomeProvider(seed, this.BIOME_REGISTRY);
+        return new AetherBiomeProvider(seed, this.BIOME_REGISTRY);
     }
 }

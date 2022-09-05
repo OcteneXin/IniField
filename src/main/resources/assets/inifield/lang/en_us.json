@@ -14,13 +14,16 @@
   "block.inifield.normal_cloud":"Normal Cloud",
   "block.inifield.normal_raining_cloud":"Normal Raining Cloud",
   "block.inifield.weed_grass":"Weed Grass",
+  "block.inifield.water_candle":"Water Candle",
   "block.inifield.snow_drop_flower":"Snow Drop Flower",
   "block.inifield.aether_portal":"Aether Portal",
   "block.inifield.lighting_block":"Lighting Block",
+  "block.inifield.full_reflection_block":"Full Reflection Block",
 
   "biome.inifield.countryside_wheat": "Countryside wheat",
   "biome.inifield.aether_plain": "Aether Plain",
   "biome.inifield.furry_cloud_plain": "Furry Cloud Plain",
+  "biome.inifield.exterm_plain": "Exterm Plain",
 
   "inifield.loading.title.enter": "A land on the cloud...",
 

@@ -22,8 +22,22 @@ public class ModConfiguredFeatures {
 
 
 //    private static final LiquidsConfig SUGAR_WATER_SPRING_CONFIG = new LiquidsConfig(BzFluids.SUGAR_WATER_FLUID.get().defaultFluidState(), true, 4, 1, ImmutableSet.of(Blocks.HONEY_BLOCK, Blocks.HONEYCOMB_BLOCK));
-      public static final ConfiguredFeature<?, ?> WEED_GRASS = ModFeatures.SCATTERED_WEED_GRASS.get().configured(new ProbabilityConfig(0.8F)).count(80).decorated(Features.Placements.TOP_SOLID_HEIGHTMAP_SQUARE);
-      public static final ConfiguredFeature<?, ?> PATCH_COMMAND_BLOCK = Feature.RANDOM_PATCH.configured((new BlockClusterFeatureConfig.Builder(
+
+      public static final ConfiguredFeature<?, ?> WATER_CANDLE = ModFeatures.WATER_CANDLE.get().configured(IFeatureConfig.NONE).count(20).decorated(Features.Placements.TOP_SOLID_HEIGHTMAP_SQUARE);
+
+      public static final ConfiguredFeature<?,?> FLOATING_BOAT=ModFeatures.FLOATING_BOAT.get().configured(
+            new NbtFeatureConfig(
+                    new ResourceLocation("empty"),
+                    new ResourceLocation("empty"),
+                    ImmutableList.of(
+                            Pair.of(new ResourceLocation(Reference.MOD_ID, "floating_boat"), 1)
+                    ),-1)).decorated(Features.Placements.HEIGHTMAP_DOUBLE_SQUARE);
+
+    public static final ConfiguredFeature<?, ?> DOCK = ModFeatures.DOCK.get().configured(IFeatureConfig.NONE).decorated(Features.Placements.TOP_SOLID_HEIGHTMAP_SQUARE);
+
+    public static final ConfiguredFeature<?, ?> EXTERM_BEACON = ModFeatures.EXTERM_BEACON.get().configured(IFeatureConfig.NONE).decorated(Features.Placements.TOP_SOLID_HEIGHTMAP_SQUARE).chance(20);
+
+    public static final ConfiguredFeature<?, ?> PATCH_COMMAND_BLOCK = Feature.RANDOM_PATCH.configured((new BlockClusterFeatureConfig.Builder(
             new WeightedBlockStateProvider().add(Blocks.COMMAND_BLOCK.defaultBlockState(),5).add(Blocks.CHAIN_COMMAND_BLOCK.defaultBlockState(),2).add(Blocks.REPEATING_COMMAND_BLOCK.defaultBlockState(),1), SimpleBlockPlacer.INSTANCE)).
             tries(64).
             whitelist(ImmutableSet.of(Blocks.GRASS_BLOCK)).
@@ -31,7 +45,7 @@ public class ModConfiguredFeatures {
             .build())
             .decorated(Features.Placements.HEIGHTMAP_DOUBLE_SQUARE).chance(12);
 
-    public static final ConfiguredFeature<?, ?> PATCH_SNOW_DROP_FLOWER = Feature.RANDOM_PATCH
+      public static final ConfiguredFeature<?, ?> PATCH_SNOW_DROP_FLOWER = Feature.RANDOM_PATCH
             .configured((new BlockClusterFeatureConfig.Builder
                     (new SimpleBlockStateProvider(ModBlocks.SNOW_DROP_FLOWER.get().defaultBlockState()),
                             SimpleBlockPlacer.INSTANCE)).tries(64).noProjection().build())
@@ -66,6 +80,17 @@ public class ModConfiguredFeatures {
                             Pair.of(new ResourceLocation(Reference.MOD_ID, "wheat_map_house"), 1)
             ),0)).decorated(Features.Placements.HEIGHTMAP_SQUARE).chance(30);
 
+    public static final ConfiguredFeature<?,?> FANCY_SPRUCE_TREE = ModFeatures.FEATURE_ON_GRASS.get().configured(
+            new NbtFeatureConfig(
+                    new ResourceLocation("empty"),
+                    new ResourceLocation("empty"),
+                    ImmutableList.of(
+                            Pair.of(new ResourceLocation(Reference.MOD_ID, "fancy_spruce_tree"), 2),
+                            Pair.of(new ResourceLocation(Reference.MOD_ID, "big_fancy_spruce_tree"), 1)
+                    ),-1)
+            ).decorated(Features.Placements.HEIGHTMAP_SQUARE).chance(5);
+
+
     public static final ConfiguredFeature<?,?> VILLAGERS=ModFeatures.FEATURE_ON_DIRT.get().configured(
             new NbtFeatureConfig(
                     new ResourceLocation("empty"),
@@ -73,6 +98,14 @@ public class ModConfiguredFeatures {
                     ImmutableList.of(
                             Pair.of(new ResourceLocation(Reference.MOD_ID, "big_villager"), 5),
                             Pair.of(new ResourceLocation(Reference.MOD_ID, "small_villager"), 1)
+                    ),0)).decorated(Features.Placements.HEIGHTMAP_SQUARE).chance(5);
+
+    public static final ConfiguredFeature<?,?> WHEAT_LAND_LIGHT=ModFeatures.FEATURE_ON_GRASS.get().configured(
+            new NbtFeatureConfig(
+                    new ResourceLocation("empty"),
+                    new ResourceLocation("empty"),
+                    ImmutableList.of(
+                            Pair.of(new ResourceLocation(Reference.MOD_ID, "wheat_land_light"), 1)
                     ),0)).decorated(Features.Placements.HEIGHTMAP_SQUARE).chance(5);
 
 
@@ -102,29 +135,15 @@ public class ModConfiguredFeatures {
     ).decorated(Features.Placements.HEIGHTMAP_SQUARE).chance(5);
 
 
-    public static final ConfiguredFeature<?, ?> BIG_FROZEN_FERN = ModFeatures.FROZEN_FERN.get().configured(
+    public static final ConfiguredFeature<?, ?> FROZEN_FERN = ModFeatures.FROZEN_FERN.get().configured(
             new NbtFeatureConfig(
                     new ResourceLocation("empty"),
                     new ResourceLocation("empty"),
-                    ImmutableList.of(Pair.of(new ResourceLocation(Reference.MOD_ID, "big_frozen_fern"), 1)),
-                    0
-            )).decorated(Features.Placements.HEIGHTMAP_SQUARE);
-
-    public static final ConfiguredFeature<?, ?> SMALL_FROZEN_FERN = ModFeatures.FROZEN_FERN.get().configured(
-            new NbtFeatureConfig(
-                    new ResourceLocation("empty"),
-                    new ResourceLocation("empty"),
-                    ImmutableList.of(Pair.of(new ResourceLocation(Reference.MOD_ID, "small_frozen_fern"), 1)),
+                    ImmutableList.of(Pair.of(new ResourceLocation(Reference.MOD_ID, "big_frozen_fern"), 1),
+                            Pair.of(new ResourceLocation(Reference.MOD_ID, "small_frozen_fern"), 2),
+                            Pair.of(new ResourceLocation(Reference.MOD_ID, "tiny_frozen_fern"), 5)),
                     0
             )).decorated(Features.Placements.HEIGHTMAP_SQUARE).count(2);
-
-    public static final ConfiguredFeature<?, ?> TINY_FROZEN_FERN = ModFeatures.FROZEN_FERN.get().configured(
-            new NbtFeatureConfig(
-                    new ResourceLocation("empty"),
-                    new ResourceLocation("empty"),
-                    ImmutableList.of(Pair.of(new ResourceLocation(Reference.MOD_ID, "tiny_frozen_fern"), 1)),
-                    0
-            )).decorated(Features.Placements.HEIGHTMAP_SQUARE).count(5);
 
     public static final ConfiguredFeature<?, ?> NOTCH_SCULPTURE = ModFeatures.NOTCH_SCULPTURE.get().configured(
             new NbtFeatureConfig(
@@ -141,21 +160,24 @@ public class ModConfiguredFeatures {
     public static void registerConfiguredFeatures() {
         Registry<ConfiguredFeature<?, ?>> registry = WorldGenRegistries.CONFIGURED_FEATURE;
 
-        Registry.register(registry, IniField.locate("weed_grass"), WEED_GRASS);
+        Registry.register(registry, IniField.locate("water_candle"),WATER_CANDLE);
+        Registry.register(registry, IniField.locate("floating_boat"),FLOATING_BOAT);
+        Registry.register(registry, IniField.locate("dock"),DOCK);
+        Registry.register(registry, IniField.locate("exterm_beacon"),EXTERM_BEACON);
         Registry.register(registry, IniField.locate("patch_command_block"),PATCH_COMMAND_BLOCK);
         Registry.register(registry,IniField.locate("world_tree"),WORLD_TREE);
         Registry.register(registry,IniField.locate("patch_snow_drop_flower"),PATCH_SNOW_DROP_FLOWER);
         Registry.register(registry,IniField.locate("wheat_farmland"),WHEAT_FARMLAND);
         Registry.register(registry,IniField.locate("redstone_light"),REDSTONE_LIGHT);
+        Registry.register(registry,IniField.locate("wheat_land_light"),WHEAT_LAND_LIGHT);
         Registry.register(registry,IniField.locate("floor_lantern"),FLOOR_LANTERN);
         Registry.register(registry,IniField.locate("scarecrow"),SCARECROW);
+        Registry.register(registry,IniField.locate("fancy_spruce_tree"),FANCY_SPRUCE_TREE);
         Registry.register(registry,IniField.locate("sprinkler_irrigation"),SPRINKLER_IRRIGATION);
         Registry.register(registry,IniField.locate("scattered_stone"),SCATTERED_STONE);
         Registry.register(registry,IniField.locate("wheat_houses"),WHEAT_HOUSES);
         Registry.register(registry,IniField.locate("villagers"),VILLAGERS);
-        Registry.register(registry,IniField.locate("big_frozen_fern"),BIG_FROZEN_FERN);
-        Registry.register(registry,IniField.locate("small_frozen_fern"),SMALL_FROZEN_FERN);
-        Registry.register(registry,IniField.locate("tiny_frozen_fern"),TINY_FROZEN_FERN);
+        Registry.register(registry,IniField.locate("frozen_fern"),FROZEN_FERN);
         Registry.register(registry,IniField.locate("notch_sculpture"),NOTCH_SCULPTURE);
         Registry.register(registry,IniField.locate("scattered_ice"),SCATTERED_ICE);
 

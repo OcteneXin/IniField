@@ -34,9 +34,17 @@ public class ModBlocks {
     public static final RegistryObject<Item> NORMAL_RAINING_CLOUD_ITEM = ModItems.ITEMS.
             register(NORMAL_RAINING_CLOUD.getId().getPath(), () -> new BlockItem(NORMAL_RAINING_CLOUD.get(),ModItems.defaultBuilder()));
 
+    public static final RegistryObject<Block> FULL_REFLECTION_BLOCK = BLOCKS.register("full_reflection_block", () -> new FullReflectionBlock(Block.Properties.of(Material.GLASS).lightLevel((i)->{return 12;}).strength(-1.0F, 3600000.8F).sound(SoundType.GLASS).noOcclusion().isValidSpawn(ModBlocks::never).isRedstoneConductor(ModBlocks::never).isSuffocating(ModBlocks::never).isViewBlocking(ModBlocks::never).noDrops()));
+    public static final RegistryObject<Item> FULL_REFLECTION_BLOCK_ITEM = ModItems.ITEMS.
+            register(FULL_REFLECTION_BLOCK.getId().getPath(), () -> new BlockItem(FULL_REFLECTION_BLOCK.get(),ModItems.defaultBuilder()));
+
     public static final RegistryObject<Block> WEED_GRASS = BLOCKS.register("weed_grass", () -> new WeedGrass(Block.Properties.of(Material.PLANT).strength(0.1F).sound(SoundType.CROP).noOcclusion().isValidSpawn(ModBlocks::never).isSuffocating(ModBlocks::never).isViewBlocking(ModBlocks::never)));
     public static final RegistryObject<Item> WEED_GRASS_ITEM = ModItems.ITEMS.
             register(WEED_GRASS.getId().getPath(), () -> new WeedGrassItem(WEED_GRASS.get(),ModItems.defaultBuilder()));
+
+    public static final RegistryObject<Block> WATER_CANDLE = BLOCKS.register("water_candle", () -> new WaterCandleBlock(Block.Properties.of(Material.PLANT).strength(0.1F).sound(SoundType.CROP).noOcclusion().isValidSpawn(ModBlocks::never).isSuffocating(ModBlocks::never).isViewBlocking(ModBlocks::never)));
+    public static final RegistryObject<Item> WATER_CANDLE_ITEM = ModItems.ITEMS.
+            register(WATER_CANDLE.getId().getPath(), () -> new BlockItem(WATER_CANDLE.get(),ModItems.defaultBuilder()));
 
 
     public static final RegistryObject<Block> SNOW_DROP_FLOWER=BLOCKS.register("snow_drop_flower",()->new SnowDropFlower(AbstractBlock.Properties.of(Material.REPLACEABLE_PLANT).noCollission().instabreak().sound(SoundType.GRASS).lightLevel((p_235464_0_) -> {

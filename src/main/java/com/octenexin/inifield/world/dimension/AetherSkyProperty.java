@@ -1,23 +1,22 @@
 package com.octenexin.inifield.world.dimension;
 
-import com.octenexin.inifield.client.ModSkyRenderer;
+import com.octenexin.inifield.client.AetherSkyRenderer;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.world.DimensionRenderInfo;
 import net.minecraft.util.math.vector.Vector3d;
-import net.minecraft.world.World;
 import net.minecraftforge.client.ISkyRenderHandler;
+import net.minecraftforge.client.IWeatherRenderHandler;
 
 import javax.annotation.Nullable;
-import java.util.logging.Level;
 
 // CLIENT-SIDED
-public class BzSkyProperty extends DimensionRenderInfo {
+public class AetherSkyProperty extends DimensionRenderInfo {
 
     float worldTime;
     private ISkyRenderHandler skyRenderer;
     private Minecraft mc;
 
-    public BzSkyProperty() {
+    public AetherSkyProperty() {
         super(32.0F, false, DimensionRenderInfo.FogType.NORMAL, false, false);
         mc=Minecraft.getInstance();
     }
@@ -37,7 +36,8 @@ public class BzSkyProperty extends DimensionRenderInfo {
     @Nullable
     public net.minecraftforge.client.ISkyRenderHandler getSkyRenderHandler() {
         if (skyRenderer == null)
-            skyRenderer = new ModSkyRenderer();
+            skyRenderer = new AetherSkyRenderer();
         return skyRenderer;
     }
+
 }

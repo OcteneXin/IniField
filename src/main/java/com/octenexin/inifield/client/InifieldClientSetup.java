@@ -3,8 +3,8 @@ package com.octenexin.inifield.client;
 
 import com.octenexin.inifield.init.ModEntityRenderers;
 import com.octenexin.inifield.utils.Reference;
-import com.octenexin.inifield.world.dimension.BzSkyProperty;
-import net.minecraft.client.renderer.Atlases;
+import com.octenexin.inifield.world.dimension.AetherSkyProperty;
+import com.octenexin.inifield.world.dimension.ExtremSkyProperty;
 import net.minecraft.client.world.DimensionRenderInfo;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
@@ -38,7 +38,8 @@ public class InifieldClientSetup {
 //        TFTileEntities.registerTileEntityRenders();
 //        TFContainers.renderScreens();
 
-          DimensionRenderInfo.EFFECTS.put(new ResourceLocation(Reference.MOD_ID, "sky_property"), new BzSkyProperty());
+          DimensionRenderInfo.EFFECTS.put(new ResourceLocation(Reference.MOD_ID, "aether_sky"), new AetherSkyProperty());
+          DimensionRenderInfo.EFFECTS.put(new ResourceLocation(Reference.MOD_ID, "extrem_sky"), new ExtremSkyProperty());
 //        TwilightForestRenderInfo renderInfo = new TwilightForestRenderInfo(128.0F, false, DimensionRenderInfo.FogType.NONE, false, false);
 //        DimensionRenderInfo.field_239208_a_.put(TwilightForestMod.prefix("renderer"), renderInfo);
 //

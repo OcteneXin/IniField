@@ -26,6 +26,8 @@ public class ModBiomes {
         createBiome("metasequoia_patch", BiomeMaker::theVoidBiome);
         createBiome("countryside_wheat", BiomeMaker::theVoidBiome);
         createBiome("city", BiomeMaker::theVoidBiome);
+        createBiome("extrem_plain", BiomeMaker::theVoidBiome);
+        createBiome("extrem_frontier_plate", BiomeMaker::theVoidBiome);
     }
 
     public static RegistryObject<Biome> createBiome(String name, Supplier<Biome> biome) {
@@ -34,6 +36,8 @@ public class ModBiomes {
 
     public static final RegistryKey<Biome> COUNTRYSIDE_WHEAT=registerBiome("countryside_wheat");
     public static final RegistryKey<Biome> CITY=registerBiome("city");
+    public static final RegistryKey<Biome> EXTREM_PLAIN=registerBiome("extrem_plain");
+    public static final RegistryKey<Biome> EXTREM_FRONTIER_PLAIN=registerBiome("extrem_frontier_plain");
     //more
 
     public static RegistryKey<Biome> registerBiome(String biomeName) {
@@ -41,9 +45,9 @@ public class ModBiomes {
     }
 
     //not use, we add them at CommonSetupEvent.java
-    public static void registerBiomes(){
+/*    public static void registerBiomes(){
         BiomeManager.addAdditionalOverworldBiomes(COUNTRYSIDE_WHEAT);
         BiomeManager.addAdditionalOverworldBiomes(CITY);
-    }
+    }*/
 
 }

@@ -1,6 +1,6 @@
 package com.octenexin.inifield.world.dimension.layer;
 
-import com.octenexin.inifield.world.dimension.BzBiomeProvider;
+import com.octenexin.inifield.world.dimension.AetherBiomeProvider;
 import net.minecraft.world.gen.INoiseRandom;
 import net.minecraft.world.gen.layer.traits.IAreaTransformer0;
 
@@ -14,8 +14,8 @@ public enum BzBiomeNonstandardLayer implements IAreaTransformer0 {
 
     public int applyPixel(INoiseRandom noise, int x, int z) {
         if(random.nextInt(40)==0){
-            return BzBiomeProvider.LAYERS_BIOME_REGISTRY.getId(
-                    BzBiomeProvider.LAYERS_BIOME_REGISTRY.get(BzBiomeProvider.METASEQUOIA_PATCH));
+            return AetherBiomeProvider.LAYERS_BIOME_REGISTRY.getId(
+                    AetherBiomeProvider.LAYERS_BIOME_REGISTRY.get(AetherBiomeProvider.METASEQUOIA_PATCH));
         }else {
             return -1;
         }

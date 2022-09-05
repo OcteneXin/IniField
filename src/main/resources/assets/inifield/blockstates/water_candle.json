@@ -1,0 +1,28 @@
+{
+  "variants": {
+    "age=0,weed_type=0": {
+      "model": "inifield:block/small_water_candle"
+    },
+    "age=0,weed_type=1": {
+      "model": "inifield:block/water_candle"
+    },
+    "age=0,weed_type=2": {
+      "model": "inifield:block/tall_water_candle"
+    },
+    "age=0,weed_type=3": {
+      "model": "inifield:block/big_water_candle"
+    },
+    "age=1,weed_type=0": {
+      "model": "inifield:block/small_water_candle"
+    },
+    "age=1,weed_type=1": {
+      "model": "inifield:block/water_candle"
+    },
+    "age=1,weed_type=2": {
+      "model": "inifield:block/tall_water_candle"
+    },
+    "age=1,weed_type=3": {
+      "model": "inifield:block/big_water_candle"
+    }
+  }
+}

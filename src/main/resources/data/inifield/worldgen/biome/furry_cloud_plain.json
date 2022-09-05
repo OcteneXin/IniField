@@ -27,9 +27,7 @@
     [],
     [
       "inifield:scattered_ice",
-      "inifield:big_frozen_fern",
-      "inifield:small_frozen_fern",
-      "inifield:tiny_frozen_fern",
+      "inifield:frozen_fern",
       "inifield:notch_sculpture"
     ],
     []

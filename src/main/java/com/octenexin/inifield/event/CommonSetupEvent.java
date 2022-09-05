@@ -3,7 +3,6 @@ package com.octenexin.inifield.event;
 import com.octenexin.inifield.IniField;
 import com.octenexin.inifield.init.*;
 import com.octenexin.inifield.network.ModNetworking;
-import com.octenexin.inifield.world.dimension.BzDimension;
 import net.minecraftforge.common.BiomeManager;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;

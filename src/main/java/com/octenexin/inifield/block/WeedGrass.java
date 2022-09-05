@@ -95,6 +95,7 @@ public class WeedGrass extends BushBlock implements IWaterLoggable, IGrowable {
 
     }
 
+
     private BlockPos getTopPos(IBlockReader world,BlockPos randomPosOnWeed){
         int y=randomPosOnWeed.getY();
         BlockPos pos=new BlockPos(randomPosOnWeed);
